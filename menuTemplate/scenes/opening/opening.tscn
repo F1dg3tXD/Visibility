@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://b42tkfqmvlrcb" path="res://menuTemplate/assets/stdioShitshow_logo/studioShitshowLogoW.png" id="2_pdglf"]
 
 [node name="Opening" unique_id=1930105641 instance=ExtResource("1_x54j4")]
-next_scene_path = "uid://dda1p8mnowc73"
+next_scene_path = "res://menuTemplate/scenes/menus/main_menu/main_menu_with_animations.tscn"
 images = Array[Texture2D]([ExtResource("2_pdglf"), ExtResource("2_5d1dm")])
 visible_time = 2.0
 show_loading_screen = true
