@@ -8,6 +8,7 @@
 next_scene_path = "uid://dda1p8mnowc73"
 images = Array[Texture2D]([ExtResource("2_pdglf"), ExtResource("2_5d1dm")])
 visible_time = 2.0
+show_loading_screen = true
 
 [node name="ColorRect" type="ColorRect" parent="." index="2" unique_id=395768472]
 layout_mode = 0

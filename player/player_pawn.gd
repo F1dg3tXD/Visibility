@@ -53,12 +53,6 @@ func _input(event: InputEvent) -> void:
 
 		rotation.y = -yaw
 		head.rotation.x = pitch
-	
-	if Input.is_action_just_pressed("ice"):
-		
-		# Wait for the "freeze" animation to finish
-		var freeze_time = 1.0  # replace with your animation’s length
-		await get_tree().create_timer(freeze_time).timeout 
 		
 	if Input.is_action_just_pressed("interact"):
 		if held_object:

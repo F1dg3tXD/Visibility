@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://bspfq8628cygl" path="res://ui/shit_meter.tscn" id="3_jms7b"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j6vuq"]
+radius = 0.4
 
 [node name="Player_pawn" type="CharacterBody3D" unique_id=1481347071 groups=["player_pawn"]]
 script = ExtResource("1_h1dtg")
