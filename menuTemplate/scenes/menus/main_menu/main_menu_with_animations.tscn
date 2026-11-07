@@ -1,9 +1,10 @@
 [gd_scene format=3 uid="uid://dda1p8mnowc73"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_menus_template/base/nodes/menus/main_menu/main_menu.tscn" id="1_virrg"]
-[ext_resource type="Script" path="res://menuTemplate/scenes/menus/main_menu/main_menu_with_animations.gd" id="2_18k50"]
-[ext_resource type="PackedScene" path="res://menuTemplate/scenes/windows/main_menu_options_window.tscn" id="3_4cctv"]
-[ext_resource type="PackedScene" path="res://menuTemplate/scenes/windows/main_menu_credits_window.tscn" id="4_deir1"]
+[ext_resource type="PackedScene" uid="uid://c6k5nnpbypshi" path="res://addons/maaacks_menus_template/base/nodes/menus/main_menu/main_menu.tscn" id="1_virrg"]
+[ext_resource type="Theme" uid="uid://ckb4kyhteioow" path="res://themes/UI_Theme.tres" id="2_4cctv"]
+[ext_resource type="Script" uid="uid://bsje248o0codv" path="res://menuTemplate/scenes/menus/main_menu/main_menu_with_animations.gd" id="2_18k50"]
+[ext_resource type="PackedScene" uid="uid://c5ydcrusiu8sp" path="res://menuTemplate/scenes/windows/main_menu_options_window.tscn" id="3_4cctv"]
+[ext_resource type="PackedScene" uid="uid://hrr4hqriuu5e" path="res://menuTemplate/scenes/windows/main_menu_credits_window.tscn" id="4_deir1"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -290,6 +291,11 @@ transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "Open
 graph_offset = Vector2(-180.277, 49)
 
 [node name="MainMenu" unique_id=589811630 instance=ExtResource("1_virrg")]
+offset_left = 1.0
+offset_top = -1.0
+offset_right = 1.0
+offset_bottom = -1.0
+theme = ExtResource("2_4cctv")
 script = ExtResource("2_18k50")
 options_packed_scene = ExtResource("3_4cctv")
 credits_packed_scene = ExtResource("4_deir1")
@@ -305,6 +311,64 @@ parameters/conditions/intro_done = false
 [node name="TitleContainer" parent="MenuContainer/TitleMargin" parent_id_path=PackedInt32Array(2112060331) index="0" unique_id=556427956]
 modulate = Color(1, 1, 1, 0)
 
+[node name="TitleLabel" parent="MenuContainer/TitleMargin/TitleContainer" index="0" unique_id=359406872]
+offset_left = 1.0
+offset_top = -23.0
+offset_right = 1.0
+offset_bottom = 47.0
+text = "No Time for Bathroom Breaks"
+
+[node name="No" type="Label" parent="MenuContainer/TitleMargin/TitleContainer/TitleLabel" index="0" unique_id=330707253]
+layout_mode = 0
+offset_left = 420.0
+offset_top = -17.0
+offset_right = 525.0
+offset_bottom = 112.0
+theme_override_colors/font_color = Color(0.9607843, 0.45882353, 0.34509805, 1)
+theme_override_font_sizes/font_size = 63
+text = "No"
+
+[node name="Time" type="Label" parent="MenuContainer/TitleMargin/TitleContainer/TitleLabel" index="1" unique_id=1231728876]
+layout_mode = 0
+offset_left = 503.0
+offset_top = -17.0
+offset_right = 674.0
+offset_bottom = 103.0
+theme_override_colors/font_color = Color(0.9607843, 0.45882353, 0.34509805, 1)
+theme_override_font_sizes/font_size = 63
+text = "Time"
+
+[node name="for" type="Label" parent="MenuContainer/TitleMargin/TitleContainer/TitleLabel" index="2" unique_id=2117213669]
+layout_mode = 0
+offset_left = 646.0
+offset_top = -11.0
+offset_right = 765.0
+offset_bottom = 109.0
+theme_override_colors/font_color = Color(0.96, 0.45824003, 0.3456, 1)
+theme_override_font_sizes/font_size = 62
+text = "for"
+
+[node name="Bathroom" type="Label" parent="MenuContainer/TitleMargin/TitleContainer/TitleLabel" index="3" unique_id=1088496292]
+layout_mode = 0
+offset_left = 360.0
+offset_top = 11.0
+offset_right = 766.0
+offset_bottom = 150.0
+offset_transform_enabled = true
+theme_override_colors/font_color = Color(0.92156863, 0.8901961, 0.6745098, 1)
+theme_override_font_sizes/font_size = 95
+text = "Bathroom"
+
+[node name="Breaks" type="Label" parent="MenuContainer/TitleMargin/TitleContainer/TitleLabel" index="4" unique_id=1694185279]
+layout_mode = 0
+offset_left = 427.0
+offset_top = 83.0
+offset_right = 698.0
+offset_bottom = 217.0
+theme_override_colors/font_color = Color(0.92156863, 0.8901961, 0.6745098, 1)
+theme_override_font_sizes/font_size = 92
+text = "Breaks"
+
 [node name="SubTitleContainer" parent="MenuContainer/SubTitleMargin" parent_id_path=PackedInt32Array(1510335937) index="0" unique_id=930520368]
 modulate = Color(1, 1, 1, 0)
 
@@ -317,7 +381,7 @@ lock = true
 [node name="VersionContainer" parent="VersionMargin" parent_id_path=PackedInt32Array(1732528471) index="0" unique_id=1603969262]
 modulate = Color(1, 1, 1, 0)
 
-[node name="MouseFilter" type="Control" parent="." index="8" unique_id=33285267]
+[node name="MouseFilter" type="Control" parent="." index="7" unique_id=33285267]
 layout_mode = 1
 anchors_preset = 15
 anchor_right = 1.0

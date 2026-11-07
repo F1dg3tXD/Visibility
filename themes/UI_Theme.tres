@@ -1,3 +1,27 @@
 [gd_resource type="Theme" format=3 uid="uid://ckb4kyhteioow"]
 
+[ext_resource type="FontFile" uid="uid://ckqgw2fdlsy2a" path="res://fonts/DarumadropOne-Regular.ttf" id="1_arc7m"]
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_otjlk"]
+bg_color = Color(0.23137255, 0.19215687, 0.14509805, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_g4gaj"]
+bg_color = Color(0.32156864, 0.25882354, 0.1764706, 1)
+
+[sub_resource type="StyleBoxFlat" id="StyleBoxFlat_a5s0c"]
+bg_color = Color(0.48, 0.40008, 0.3024, 1)
+corner_detail = 9
+
 [resource]
+Button/colors/font_color = Color(0.9607843, 0.45882353, 0.34509805, 1)
+Button/colors/font_hover_color = Color(0.92156863, 0.8901961, 0.6745098, 1)
+Button/colors/font_pressed_color = Color(0.92156863, 0.8901961, 0.6745098, 1)
+Button/font_sizes/font_size = 16
+Button/fonts/font = ExtResource("1_arc7m")
+Button/styles/hover = SubResource("StyleBoxFlat_otjlk")
+Button/styles/normal = SubResource("StyleBoxFlat_g4gaj")
+Button/styles/pressed = SubResource("StyleBoxFlat_a5s0c")
+Label/colors/font_color = Color(0.92156863, 0.8901961, 0.6745098, 1)
+Label/constants/line_spacing = 12
+Label/font_sizes/font_size = 34
+Label/fonts/font = ExtResource("1_arc7m")
