@@ -1,0 +1,153 @@
+[gd_scene format=3 uid="uid://blstrvusmss87"]
+
+[ext_resource type="Script" uid="uid://blf8n1iejc4qj" path="res://Globals/player_pawn.gd" id="1_j6vuq"]
+[ext_resource type="PackedScene" uid="uid://ckmmespdb8apn" path="res://models/player.tscn" id="1_w3tdh"]
+[ext_resource type="PackedScene" uid="uid://rahvohrxtbfr" path="res://models/iceRect.tscn" id="2_1dixm"]
+[ext_resource type="PackedScene" uid="uid://b6a8kh0nrt4tp" path="res://models/iceCube.tscn" id="3_kfe1x"]
+[ext_resource type="PackedScene" uid="uid://c3iofxi462mhv" path="res://UI_Test/scenes/pause_menu_controller.tscn" id="3_xb0lg"]
+[ext_resource type="PackedScene" uid="uid://djfv422o6fc2w" path="res://models/freeze_gun.tscn" id="5_kfe1x"]
+[ext_resource type="Texture2D" uid="uid://nrlpag336p03" path="res://addons/kenney_crosshair-pack/PNG/Outline Retina/crosshair027.png" id="7_lygmr"]
+
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j6vuq"]
+
+[node name="Player_pawn" type="CharacterBody3D" unique_id=1481347071 groups=["player_pawn"]]
+script = ExtResource("1_j6vuq")
+ice_rect_scene = ExtResource("2_1dixm")
+ice_cube_scene = ExtResource("3_kfe1x")
+hold_distance = -2.0
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=388220360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_j6vuq")
+
+[node name="player" parent="." unique_id=2021359446 instance=ExtResource("1_w3tdh")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.25, 0)
+
+[node name="Skeleton3D" parent="player/Armature" parent_id_path=PackedInt32Array(2021359446, 1419621088) index="0" unique_id=1847259230]
+bones/0/position = Vector3(-0.0022393663, -0.0026524458, -0.433541)
+bones/0/rotation = Quaternion(-0.7395234, -0.25604835, 0.24665038, 0.5715838)
+bones/1/rotation = Quaternion(-0.014618802, 0.057780344, 0.029733788, 0.9977794)
+bones/2/rotation = Quaternion(0.02280599, 0.068246186, 0.0026923872, 0.9974043)
+bones/3/rotation = Quaternion(0.023428563, 0.06834746, 0.0010517578, 0.9973859)
+bones/4/rotation = Quaternion(0.1390964, 0.06431708, -0.029089265, 0.98775977)
+bones/5/rotation = Quaternion(0.0062803626, 0.17334907, 0.0717573, 0.98222286)
+bones/7/rotation = Quaternion(-0.5541947, -0.45543393, 0.58894, -0.3722874)
+bones/8/rotation = Quaternion(0.19731347, -0.18829355, 0.4326762, 0.85930455)
+bones/9/rotation = Quaternion(-0.07780664, 0.007279845, 0.65334684, 0.7530147)
+bones/10/rotation = Quaternion(-0.12432948, -0.45100784, -0.38687512, 0.7946456)
+bones/31/rotation = Quaternion(0.447025, -0.4140264, 0.5586443, 0.5627321)
+bones/32/rotation = Quaternion(0.3500992, 0.065525725, -0.77520794, 0.521718)
+bones/33/rotation = Quaternion(-0.02377549, -0.008968806, -0.2516, 0.9674977)
+bones/34/rotation = Quaternion(-0.17109996, 0.4410063, 0.21504495, 0.8543968)
+bones/55/rotation = Quaternion(0.12565732, 0.2502192, 0.94545573, -0.16647576)
+bones/56/rotation = Quaternion(-0.2596014, -0.08280039, 0.027999168, 0.9617522)
+bones/57/rotation = Quaternion(0.45379278, -0.0811005, -0.027463833, 0.886984)
+bones/60/rotation = Quaternion(-0.12590739, 0.116810806, 0.9834209, 0.05818874)
+bones/61/rotation = Quaternion(-0.22261363, -0.07441914, -0.0019762048, 0.9720602)
+bones/62/rotation = Quaternion(0.54264766, 0.12772565, 0.04564406, 0.8289368)
+
+[node name="GEO-body_male_stylized" parent="player/Armature/Skeleton3D" index="0" unique_id=2111882957]
+cast_shadow = 3
+
+[node name="BoneAttachment3D" parent="player/Armature/Skeleton3D" index="1"]
+transform = Transform3D(0.019584239, 0.058058918, 0.9981207, -0.27879122, 0.95903236, -0.05031458, -0.96015143, -0.2772821, 0.034968376, 0.019298159, 0.24435945, -0.9929003)
+
+[node name="freeze gun" parent="player/Armature/Skeleton3D/BoneAttachment3D/FreezeGun" index="0" unique_id=1433834449]
+cast_shadow = 3
+
+[node name="Head" type="Node3D" parent="." unique_id=1073334736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=265005412]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="IK_Target" type="Node3D" parent="Head" unique_id=1620211201]
+transform = Transform3D(0.84838086, 0, -0.52938634, -0.113289885, 0.97683316, -0.18155544, 0.51712215, 0.21400228, 0.8287266, 0, 0, -0.5154965)
+
+[node name="IK_Hands" type="Node3D" parent="Head" unique_id=750133457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16758466, -0.013391495)
+
+[node name="IK_TargetL" type="Node3D" parent="Head/IK_Hands" unique_id=903012660]
+transform = Transform3D(-0.066489846, 0.131302, -0.9891102, -0.9786989, 0.18439148, 0.090267584, 0.19423582, 0.974043, 0.116244994, -0.034290984, -0.21924114, -0.09448388)
+
+[node name="IK_TargetR" type="Node3D" parent="Head/IK_Hands" unique_id=2080273488]
+transform = Transform3D(-0.18908174, -0.079103954, 0.97877, 0.97046894, 0.13699552, 0.19855005, -0.14979312, 0.9874082, 0.050864637, -0.08710897, -0.21924114, -0.23134312)
+
+[node name="RayCast3D" type="RayCast3D" parent="Head" unique_id=988528935]
+target_position = Vector3(0, 0, 5)
+
+[node name="Hand" type="Node3D" parent="Head" unique_id=39238264]
+transform = Transform3D(0.9956308, 0.011553823, 0.09265984, -0.01150411, 0.99993324, -0.0010706468, -0.09266602, 0, 0.99569726, -0.40245104, -0.26922417, 0.52492017)
+
+[node name="FreezeGun" parent="Head/Hand" unique_id=1239844927 instance=ExtResource("5_kfe1x")]
+
+[node name="freeze gun" parent="Head/Hand/FreezeGun" index="0" unique_id=1433834449]
+transform = Transform3D(-1, 1.5655724e-08, -1.4585075e-07, -2.2626681e-08, 0.9659255, 0.25881907, 1.44933e-07, 0.25881898, -0.9659258, 0, 0, 0.31489235)
+
+[node name="PauseMenuController" parent="." unique_id=1206119354 instance=ExtResource("3_xb0lg")]
+
+[node name="IceSpawn" type="Node3D" parent="." unique_id=175529027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.067792, 0)
+
+[node name="Crosshair" type="Control" parent="." unique_id=1715012261]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+
+[node name="TextureRect" type="TextureRect" parent="Crosshair" unique_id=1053991028]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -72.0
+offset_right = 72.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("7_lygmr")
+
+[node name="no_check" type="Control" parent="." unique_id=531514691]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Label" type="Label" parent="no_check" unique_id=1811172986]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -299.5
+offset_top = -210.0
+offset_right = 299.5
+offset_bottom = -134.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(0.29411766, 0.7294118, 1, 1)
+theme_override_colors/font_outline_color = Color(0, 0, 0, 1)
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 51
+text = "No Checkpoint Available"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="footTargetL" type="Node3D" parent="." unique_id=791958984]
+
+[node name="footTargetR" type="Node3D" parent="." unique_id=225843222]
+
+[editable path="player"]
+[editable path="player/Armature/Skeleton3D/BoneAttachment3D/FreezeGun"]
+[editable path="Head/Hand/FreezeGun"]

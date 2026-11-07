@@ -1,0 +1,31 @@
+[gd_scene format=3 uid="uid://dt8j10aiga62g"]
+
+[ext_resource type="PackedScene" uid="uid://c1abolksapyoe" path="res://editor/env.tscn" id="1_np538"]
+
+[node name="TestMap" type="Node3D" unique_id=1626944311]
+
+[node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=827797194]
+size = Vector3(10, 0.2, 10)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D" unique_id=858197422]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
+size = Vector3(0.1, 5, 7)
+
+[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D/CSGBox3D" unique_id=266076127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9016354, -2)
+operation = 2
+size = Vector3(1, 2, 1)
+
+[node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=1113951812]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 0)
+size = Vector3(0.1, 5, 7)
+
+[node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D" unique_id=985474025]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.5, 2, 3.5)
+size = Vector3(0.1, 5, 7)
+
+[node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D" unique_id=737626923]
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.4999999, 2, -3.5)
+size = Vector3(0.1, 5, 7)
+
+[node name="env" parent="." unique_id=1864429574 instance=ExtResource("1_np538")]

@@ -10,18 +10,78 @@ config_version=5
 
 [application]
 
-config/name="Visibility"
+config/name="No Time for Bathroom Breaks"
+config/description="Take A Shit Now!!!"
+run/main_scene="res://menuTemplate/scenes/opening/opening.tscn"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
+
+[audio]
+
+buses/default_bus_layout="uid://digr1it8w2s5a"
+
+[autoload]
+
+AppConfig="*uid://cjke6crjg14a0"
+SceneLoader="*uid://cpehcs7n5c62p"
+ProjectMusicController="*uid://r5t485lr3p7t"
+ProjectUISoundController="*uid://cc37235kj4384"
+UISoundController="*uid://cc37235kj4384"
+MusicController="*uid://r5t485lr3p7t"
+
+[clean_copy_examples]
+
+examples_paths=Array[String](["res://addons/maaacks_scene_loader/examples/", "res://addons/maaacks_menus_template/examples/", "res://addons/maaacks_scene_loader/examples/", "res://addons/maaacks_menus_template/examples/"])
+copy_path="res://menuTemplate/"
 
 [display]
 
 window/stretch/mode="canvas_items"
 window/stretch/aspect="expand"
 
+[editor_plugins]
+
+enabled=PackedStringArray("res://addons/maaacks_menus_template/plugin.cfg", "res://addons/maaacks_music_controller/plugin.cfg", "res://addons/maaacks_scene_loader/plugin.cfg", "res://addons/maaacks_ui_sound_controller/plugin.cfg", "res://addons/plugin_updater/plugin.cfg")
+
+[internationalization]
+
+locale/translations=PackedStringArray("res://addons/maaacks_menus_template/base/translations/menus_translations.en.translation", "res://addons/maaacks_menus_template/base/translations/menus_translations.fr.translation")
+
+[maaacks_menus_template]
+
+disable_install_audio_busses=true
+disable_update_check=false
+disable_install_wizard=true
+copy_path="res://menuTemplate/"
+main_menu_scene_path="res://menuTemplate/scenes/menus/main_menu/main_menu.tscn"
+game_scene_path=""
+ending_scene_path="res://menuTemplate/scenes/end_credits/end_credits.tscn"
+
+[maaacks_music_controller]
+
+disable_install_audio_busses=true
+
+[maaacks_scene_loader]
+
+loading_scene_path="res://Maaack's Menus Template/scenes/loading_screens/loading_screen.tscn"
+
+[maaacks_ui_sound_controller]
+
+disable_install_audio_busses=true
+
 [physics]
 
 3d/physics_engine="Jolt Physics"
+
+[plugin_updater]
+
+plugins={
+"res://addons/maaacks_menus_template/": "https://github.com/Maaack/Godot-Menus-Template",
+"res://addons/maaacks_music_controller/": "https://github.com/Maaack/Godot-Music-Controller",
+"res://addons/maaacks_scene_loader/": "https://github.com/Maaack/Godot-Scene-Loader",
+"res://addons/maaacks_ui_sound_controller/": "https://github.com/Maaack/Godot-UI-Sound-Controller",
+"res://addons/plugin_updater/": "https://github.com/Maaack/Godot-Plugin-Updater"
+}
 
 [rendering]
 
