@@ -21,26 +21,11 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=265005412]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="IK_Target" type="Node3D" parent="Head" unique_id=1620211201]
-transform = Transform3D(0.84838086, 0, -0.52938634, -0.113289885, 0.97683316, -0.18155544, 0.51712215, 0.21400228, 0.8287266, 0, 0, -0.5154965)
-
-[node name="IK_Hands" type="Node3D" parent="Head" unique_id=750133457]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16758466, -0.013391495)
-
-[node name="IK_TargetL" type="Node3D" parent="Head/IK_Hands" unique_id=903012660]
-transform = Transform3D(-0.066489846, 0.131302, -0.9891102, -0.9786989, 0.18439148, 0.090267584, 0.19423582, 0.974043, 0.116244994, -0.034290984, -0.21924114, -0.09448388)
-
-[node name="IK_TargetR" type="Node3D" parent="Head/IK_Hands" unique_id=2080273488]
-transform = Transform3D(-0.18908174, -0.079103954, 0.97877, 0.97046894, 0.13699552, 0.19855005, -0.14979312, 0.9874082, 0.050864637, -0.08710897, -0.21924114, -0.23134312)
-
 [node name="RayCast3D" type="RayCast3D" parent="Head" unique_id=988528935]
 target_position = Vector3(0, 0, 5)
 
 [node name="Hand" type="Node3D" parent="Head" unique_id=39238264]
 transform = Transform3D(0.9956308, 0.011553823, 0.09265984, -0.01150411, 0.99993324, -0.0010706468, -0.09266602, 0, 0.99569726, -0.40245104, -0.26922417, 0.52492017)
-
-[node name="IceSpawn" type="Node3D" parent="." unique_id=175529027]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.067792, 0)
 
 [node name="Crosshair" type="Control" parent="." unique_id=1715012261]
 layout_mode = 3
@@ -108,5 +93,7 @@ vertical_alignment = 1
 [node name="footTargetR" type="Node3D" parent="." unique_id=225843222]
 
 [node name="shitMeter" parent="." unique_id=1603831890 instance=ExtResource("3_jms7b")]
+TimeLimit = 120.0
+WarningTime = 0.8
 
 [editable path="shitMeter"]

@@ -6,6 +6,12 @@ extends CharacterBody3D
 @onready var crosshair: Control = $Crosshair
 @onready var no_check: Control = $no_check
 
+# The time limit for the game is from here
+@onready var shit_meter: Control = $shitMeter
+
+var _flashing_no_check: bool = false
+var _flash_timer: float = 0.0
+
 var held_object: RigidBody3D = null
 
 @export var hold_distance: float = 2.0
@@ -44,6 +50,18 @@ func _ready() -> void:
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	crosshair.visible = false
 	no_check.visible = false
+	if shit_meter:
+		shit_meter.warning_reached.connect(_on_shit_meter_warning)
+		shit_meter.time_ended.connect(_on_shit_meter_ended)
+
+func _on_shit_meter_warning(_percent: float) -> void:
+	no_check.visible = true
+	_flashing_no_check = true
+	_flash_timer = 0.0
+
+func _on_shit_meter_ended() -> void:
+	_flashing_no_check = false
+	no_check.visible = false
 
 func _input(event: InputEvent) -> void:
 	if event is InputEventMouseMotion:
@@ -73,6 +91,11 @@ func _input(event: InputEvent) -> void:
 					#gun_animation_tree.set("parameters/conditions/!isGrab", false)
 
 func _process(delta: float) -> void:
+	if _flashing_no_check:
+		_flash_timer += delta
+		if _flash_timer >= 0.25:
+			_flash_timer = 0.0
+			no_check.visible = not no_check.visible
 	# --- CONTROLLER LOOK ---
 	var look_input := Vector2.ZERO
 	look_input.x = Input.get_action_strength("look_right") - Input.get_action_strength("look_left")
