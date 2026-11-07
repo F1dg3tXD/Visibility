@@ -21,9 +21,9 @@ var current_idw: float = 1.0
 @export var JUMP_VELOCITY := 4.5
 
 # --- Capsule heights ---
-const STAND_HEIGHT := 2.0
-const CROUCH_HEIGHT := 1.0
-const CROUCH_SPEED := 3.0
+@export var STAND_HEIGHT := 1.8
+@export var CROUCH_HEIGHT := 1.0
+@export var CROUCH_SPEED := 3.0
 
 # --- Mouse look ---
 @export var mouse_sensitivity: float = 0.0025
