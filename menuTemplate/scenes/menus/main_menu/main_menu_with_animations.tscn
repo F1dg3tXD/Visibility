@@ -292,7 +292,7 @@ states/Start/position = Vector2(82, 123)
 transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "OpenSubMenu", SubResource("14"), "Start", "Intro", SubResource("AnimationNodeStateMachineTransition_j0orr"), "OpenSubMenu", "OpenMainMenu", SubResource("AnimationNodeStateMachineTransition_63dxc")]
 graph_offset = Vector2(-180.277, 49)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_5d1dm"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_deir1"]
 viewport_path = NodePath("TestMap/Camera3D/SubViewport")
 
 [node name="MainMenu" unique_id=589811630 instance=ExtResource("1_virrg")]
@@ -319,7 +319,7 @@ anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
 
 [node name="BackgroundTextureRect" parent="." index="3" unique_id=1940176448]
-texture = SubResource("ViewportTexture_5d1dm")
+texture = SubResource("ViewportTexture_deir1")
 
 [node name="TitleContainer" parent="MenuContainer/TitleMargin" parent_id_path=PackedInt32Array(2112060331) index="0" unique_id=556427956]
 modulate = Color(1, 1, 1, 0)

@@ -1,7 +1,16 @@
 [gd_scene format=3 uid="uid://bw77dyrgsvhpv"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_scene_loader/base/nodes/loading_screen/loading_screen.tscn" id="1_1tvly"]
-[ext_resource type="Script" path="res://menuTemplate/scenes/loading_screens/loading_screen.gd" id="2_i8jow"]
+[ext_resource type="PackedScene" uid="uid://bylvh6psebf7h" path="res://addons/maaacks_scene_loader/base/nodes/loading_screen/loading_screen.tscn" id="1_1tvly"]
+[ext_resource type="Script" uid="uid://bigocwel65kan" path="res://menuTemplate/scenes/loading_screens/loading_screen.gd" id="2_i8jow"]
 
 [node name="LoadingScreen" unique_id=179842335 instance=ExtResource("1_1tvly")]
 script = ExtResource("2_i8jow")
+
+[node name="ProgressLabel" parent="Control/VBoxContainer" parent_id_path=PackedInt32Array(435288529) index="0" unique_id=216311769]
+theme_override_font_sizes/font_size = 74
+
+[node name="ErrorMessage" parent="Control" parent_id_path=PackedInt32Array(806971123) index="4" unique_id=1570986920]
+oversampling_override = 1.0
+
+[node name="StalledMessage" parent="Control" parent_id_path=PackedInt32Array(806971123) index="5" unique_id=1854162353]
+oversampling_override = 1.0
