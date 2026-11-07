@@ -1,12 +1,23 @@
 [gd_scene format=3 uid="uid://cjsbh47yr8mld"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_menus_template/base/nodes/opening/opening.tscn" id="1_x54j4"]
-[ext_resource type="Texture2D" path="res://menuTemplate/assets/godot_engine_logo/logo_vertical_color_dark.png" id="2_5d1dm"]
+[ext_resource type="PackedScene" uid="uid://sikc02ddepyt" path="res://addons/maaacks_menus_template/base/nodes/opening/opening.tscn" id="1_x54j4"]
+[ext_resource type="Texture2D" uid="uid://bi0pq8n4vqk4u" path="res://menuTemplate/assets/godot_engine_logo/logo_vertical_color_dark.png" id="2_5d1dm"]
+[ext_resource type="Texture2D" uid="uid://b42tkfqmvlrcb" path="res://menuTemplate/assets/stdioShitshow_logo/studioShitshowLogoW.png" id="2_pdglf"]
 
 [node name="Opening" unique_id=1930105641 instance=ExtResource("1_x54j4")]
-images = Array[Texture2D]([ExtResource("2_5d1dm")])
+next_scene_path = "uid://dda1p8mnowc73"
+images = Array[Texture2D]([ExtResource("2_pdglf"), ExtResource("2_5d1dm")])
+visible_time = 2.0
 
-[node name="ImagesContainer" parent="." index="2" unique_id=1471559661]
+[node name="ColorRect" type="ColorRect" parent="." index="2" unique_id=395768472]
+layout_mode = 0
+offset_left = 64.0
+offset_top = 64.0
+offset_right = 1088.0
+offset_bottom = 584.0
+color = Color(0, 0, 0, 1)
+
+[node name="ImagesContainer" parent="." index="3" unique_id=1471559661]
 theme_override_constants/margin_left = 64
 theme_override_constants/margin_top = 64
 theme_override_constants/margin_right = 64

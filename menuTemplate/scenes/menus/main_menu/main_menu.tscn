@@ -1,11 +1,115 @@
 [gd_scene format=3 uid="uid://cvacuyb2jq2hf"]
 
-[ext_resource type="PackedScene" path="res://addons/maaacks_menus_template/base/nodes/menus/main_menu/main_menu.tscn" id="1_4pa6s"]
-[ext_resource type="Script" path="res://menuTemplate/scenes/menus/main_menu/main_menu.gd" id="2_mhg3q"]
-[ext_resource type="PackedScene" path="res://menuTemplate/scenes/windows/main_menu_options_window.tscn" id="3_7sl7l"]
-[ext_resource type="PackedScene" path="res://menuTemplate/scenes/windows/main_menu_credits_window.tscn" id="4_0xavy"]
+[ext_resource type="Script" uid="uid://0ftyk5nonykf" path="res://player/player_pawn.gd" id="1_4pa6s"]
+[ext_resource type="Texture2D" uid="uid://jxlgr5g8cnvr" path="res://menuTemplate/assets/kenney_input-prompts/Generic/Vector/generic_button_circle_outline.svg" id="1_07iw7"]
+[ext_resource type="Theme" uid="uid://ckb4kyhteioow" path="res://themes/UI_Theme.tres" id="2_7sl7l"]
+[ext_resource type="PackedScene" uid="uid://bspfq8628cygl" path="res://ui/shit_meter.tscn" id="4_mhg3q"]
 
-[node name="MainMenu" unique_id=869232425 instance=ExtResource("1_4pa6s")]
-script = ExtResource("2_mhg3q")
-options_packed_scene = ExtResource("3_7sl7l")
-credits_packed_scene = ExtResource("4_0xavy")
+[sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j6vuq"]
+
+[node name="Player_pawn" type="CharacterBody3D" unique_id=1481347071 groups=["player_pawn"]]
+script = ExtResource("1_4pa6s")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=388220360]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
+shape = SubResource("CapsuleShape3D_j6vuq")
+
+[node name="Head" type="Node3D" parent="." unique_id=1073334736]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
+
+[node name="Camera3D" type="Camera3D" parent="Head" unique_id=265005412]
+transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
+
+[node name="IK_Target" type="Node3D" parent="Head" unique_id=1620211201]
+transform = Transform3D(0.84838086, 0, -0.52938634, -0.113289885, 0.97683316, -0.18155544, 0.51712215, 0.21400228, 0.8287266, 0, 0, -0.5154965)
+
+[node name="IK_Hands" type="Node3D" parent="Head" unique_id=750133457]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.16758466, -0.013391495)
+
+[node name="IK_TargetL" type="Node3D" parent="Head/IK_Hands" unique_id=903012660]
+transform = Transform3D(-0.066489846, 0.131302, -0.9891102, -0.9786989, 0.18439148, 0.090267584, 0.19423582, 0.974043, 0.116244994, -0.034290984, -0.21924114, -0.09448388)
+
+[node name="IK_TargetR" type="Node3D" parent="Head/IK_Hands" unique_id=2080273488]
+transform = Transform3D(-0.18908174, -0.079103954, 0.97877, 0.97046894, 0.13699552, 0.19855005, -0.14979312, 0.9874082, 0.050864637, -0.08710897, -0.21924114, -0.23134312)
+
+[node name="RayCast3D" type="RayCast3D" parent="Head" unique_id=988528935]
+target_position = Vector3(0, 0, 5)
+
+[node name="Hand" type="Node3D" parent="Head" unique_id=39238264]
+transform = Transform3D(0.9956308, 0.011553823, 0.09265984, -0.01150411, 0.99993324, -0.0010706468, -0.09266602, 0, 0.99569726, -0.40245104, -0.26922417, 0.52492017)
+
+[node name="IceSpawn" type="Node3D" parent="." unique_id=175529027]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 3.067792, 0)
+
+[node name="Crosshair" type="Control" parent="." unique_id=1715012261]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+size_flags_horizontal = 4
+size_flags_vertical = 4
+mouse_filter = 2
+
+[node name="TextureRect" type="TextureRect" parent="Crosshair" unique_id=1053991028]
+layout_mode = 1
+anchors_preset = 8
+anchor_left = 0.5
+anchor_top = 0.5
+anchor_right = 0.5
+anchor_bottom = 0.5
+offset_left = -72.0
+offset_top = -72.0
+offset_right = 72.0
+offset_bottom = 72.0
+grow_horizontal = 2
+grow_vertical = 2
+texture = ExtResource("1_07iw7")
+stretch_mode = 3
+
+[node name="no_check" type="Control" parent="." unique_id=531514691]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("2_7sl7l")
+
+[node name="Label" type="Label" parent="no_check" unique_id=1811172986]
+layout_mode = 1
+anchors_preset = 7
+anchor_left = 0.5
+anchor_top = 1.0
+anchor_right = 0.5
+anchor_bottom = 1.0
+offset_left = -299.5
+offset_top = -549.0
+offset_right = 299.5
+offset_bottom = -393.0
+grow_horizontal = 2
+grow_vertical = 0
+theme_override_colors/font_color = Color(1.2731656, 0, 0.37392852, 1)
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 0)
+theme_override_constants/shadow_offset_x = 1
+theme_override_constants/shadow_offset_y = 1
+theme_override_constants/outline_size = 18
+theme_override_font_sizes/font_size = 49
+text = "WARNING
+SHIT EMINENT"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="footTargetL" type="Node3D" parent="." unique_id=791958984]
+
+[node name="footTargetR" type="Node3D" parent="." unique_id=225843222]
+
+[node name="shitMeter" parent="." unique_id=1603831890 instance=ExtResource("4_mhg3q")]
+offset_left = 201.0
+offset_top = 239.0
+offset_right = 201.0
+offset_bottom = 239.0
+
+[editable path="shitMeter"]

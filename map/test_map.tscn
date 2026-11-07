@@ -1,6 +1,7 @@
 [gd_scene format=3 uid="uid://dt8j10aiga62g"]
 
 [ext_resource type="PackedScene" uid="uid://c1abolksapyoe" path="res://editor/env.tscn" id="1_np538"]
+[ext_resource type="Texture2D" uid="uid://cqt4c7arm2cp" path="res://menuTemplate/assets/stdioShitshow_logo/studioShitshowLogo.png" id="2_r1p3x"]
 
 [node name="TestMap" type="Node3D" unique_id=1626944311]
 
@@ -29,3 +30,18 @@ transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.4
 size = Vector3(0.1, 5, 7)
 
 [node name="env" parent="." unique_id=1864429574 instance=ExtResource("1_np538")]
+
+[node name="Camera3D" type="Camera3D" parent="." unique_id=251471219]
+transform = Transform3D(-4.371139e-08, 0, 1, 0, 1, 0, -1, 0, -4.371139e-08, 5.246603, 2, 0)
+
+[node name="SubViewport" type="SubViewport" parent="Camera3D" unique_id=827859785]
+transparent_bg = true
+size = Vector2i(1920, 1080)
+
+[node name="Node3D" type="Node3D" parent="." unique_id=430139349]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1205645, 1.2053742, 1.6029849)
+
+[node name="Sprite3D" type="Sprite3D" parent="Node3D" unique_id=1890314268]
+pixel_size = 0.0025
+billboard = 2
+texture = ExtResource("2_r1p3x")

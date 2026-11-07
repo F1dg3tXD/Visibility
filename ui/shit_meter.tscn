@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://bspfq8628cygl"]
+
+[ext_resource type="Script" uid="uid://de5pxlcpq1yg8" path="res://ui/shit_meter.gd" id="1_5tvwa"]
+[ext_resource type="Texture2D" uid="uid://2gu3t01h28um" path="res://ui/textures/intestineback.png" id="1_x2o2s"]
+[ext_resource type="Texture2D" uid="uid://uq3qd0uxnf56" path="res://ui/textures/intestinefront.png" id="2_5tvwa"]
+[ext_resource type="Texture2D" uid="uid://dw1m7rd5ts661" path="res://ui/textures/shit.png" id="3_100vb"]
+
+[node name="shitMeter" type="Control" unique_id=1603831890]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+script = ExtResource("1_5tvwa")
+
+[node name="TextureProgressBar" type="TextureProgressBar" parent="." unique_id=2119597288]
+layout_mode = 0
+offset_left = 23.0
+offset_top = 28.0
+offset_right = 818.0
+offset_bottom = 1854.0
+scale = Vector2(0.256, 0.2)
+step = 0.01
+value = 57.0
+rounded = true
+fill_mode = 2
+texture_under = ExtResource("1_x2o2s")
+texture_over = ExtResource("2_5tvwa")
+texture_progress = ExtResource("3_100vb")
+tint_under = Color(1, 0.6887287, 0.639383, 1)
+tint_over = Color(0.74138474, 0.7413847, 0.74138457, 1)
