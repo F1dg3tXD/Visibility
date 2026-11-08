@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://d13msfn4hft2t"]
+
+[ext_resource type="Texture2D" uid="uid://dktfjhn82kmm8" path="res://models/ModularBathroomTiles_ceiling_D.png" id="1_pqsg1"]
+
+[resource]
+resource_name = "ceiling"
+albedo_texture = ExtResource("1_pqsg1")
+roughness = 0.5
+metadata/_gltf_primary_texture_coord = 0

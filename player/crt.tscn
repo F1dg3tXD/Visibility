@@ -1,0 +1,32 @@
+[gd_scene format=3 uid="uid://caycaetlutewf"]
+
+[ext_resource type="Shader" uid="uid://b3rkas84gon5g" path="res://shaders/crt.gdshader" id="1_ejowy"]
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_v6dg5"]
+shader = ExtResource("1_ejowy")
+shader_parameter/mask_type = 4
+shader_parameter/curve = 0.0
+shader_parameter/sharpness = 0.7130000101175
+shader_parameter/color_offset = 0.0
+shader_parameter/mask_brightness = 1.0
+shader_parameter/scanline_brightness = 1.0
+shader_parameter/min_scanline_thickness = 0.6390000184775
+shader_parameter/aspect = 0.75
+shader_parameter/wobble_strength = 1.0
+
+[node name="CRT" type="Control" unique_id=93925192]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="." unique_id=1501276799]
+material = SubResource("ShaderMaterial_v6dg5")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2

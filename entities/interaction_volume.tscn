@@ -1,0 +1,51 @@
+[gd_scene format=3 uid="uid://rtc2qmkduwp4"]
+
+[ext_resource type="Script" uid="uid://u2fwwqwx706p" path="res://entities/interaction_volume.gd" id="1_pirc4"]
+[ext_resource type="Theme" uid="uid://ckb4kyhteioow" path="res://themes/UI_Theme.tres" id="1_tbcjf"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_twre7"]
+viewport_path = NodePath("SubViewport")
+
+[node name="interactionVolume" type="Area3D" unique_id=2147379566]
+script = ExtResource("1_pirc4")
+
+[node name="promtGraphics" type="Sprite3D" parent="." unique_id=1435343400]
+billboard = 1
+no_depth_test = true
+texture = SubResource("ViewportTexture_twre7")
+
+[node name="SubViewport" type="SubViewport" parent="." unique_id=1130315418]
+transparent_bg = true
+size = Vector2i(240, 240)
+
+[node name="Control" type="Control" parent="SubViewport" unique_id=2059188833]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+theme = ExtResource("1_tbcjf")
+
+[node name="VBoxContainer" type="VBoxContainer" parent="SubViewport/Control" unique_id=17320310]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+offset_transform_enabled = true
+alignment = 1
+
+[node name="interactLabel" type="Label" parent="SubViewport/Control/VBoxContainer" unique_id=1738386251]
+visible = false
+layout_mode = 2
+theme_override_constants/outline_size = 10
+theme_override_font_sizes/font_size = 54
+text = "Interact"
+horizontal_alignment = 1
+vertical_alignment = 1
+
+[node name="inputIcon" type="TextureRect" parent="SubViewport/Control/VBoxContainer" unique_id=1369491275]
+layout_mode = 2
+stretch_mode = 3

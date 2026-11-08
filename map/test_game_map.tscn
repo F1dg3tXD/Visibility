@@ -2,6 +2,13 @@
 
 [ext_resource type="PackedScene" uid="uid://c1abolksapyoe" path="res://editor/env.tscn" id="1_25lp6"]
 [ext_resource type="PackedScene" uid="uid://blstrvusmss87" path="res://player/Player_pawn.tscn" id="2_25lp6"]
+[ext_resource type="PackedScene" uid="uid://bodnch622yjdy" path="res://music/level_music.tscn" id="3_o0g0d"]
+[ext_resource type="PackedScene" uid="uid://cy27bcy6ddbvc" path="res://entities/test_thing.tscn" id="4_1lumu"]
+[ext_resource type="PackedScene" uid="uid://rtc2qmkduwp4" path="res://entities/interaction_volume.tscn" id="5_b21w7"]
+[ext_resource type="PackedScene" uid="uid://duc8bw4kkov65" path="res://menuTemplate/scenes/menus/options_menu/input/input_icon_mapper.tscn" id="6_vqmpj"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5d25b"]
+size = Vector3(1, 1, 0.16992188)
 
 [node name="TestMap" type="Node3D" unique_id=1626944311]
 
@@ -33,4 +40,19 @@ size = Vector3(0.1, 5, 7)
 [node name="env" parent="." unique_id=1864429574 instance=ExtResource("1_25lp6")]
 
 [node name="Player_pawn" parent="." unique_id=1481347071 instance=ExtResource("2_25lp6")]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5801973, 0.289423, -1.1657267)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5801973, 1.3518012, -1.1657267)
+
+[node name="LevelMusic" parent="." unique_id=907132422 instance=ExtResource("3_o0g0d")]
+autoplay = true
+
+[node name="TestThing" parent="." unique_id=1931625928 instance=ExtResource("4_1lumu")]
+transform = Transform3D(-1, 0, -8.742278e-08, 0, 1, 0, 8.742278e-08, 0, -1, -0.66402143, 2.0999994, 3.4392178)
+
+[node name="interactionVolume" parent="TestThing" unique_id=2147379566 instance=ExtResource("5_b21w7")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5.9604645e-08, 0, 0.51193404)
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="TestThing/interactionVolume" unique_id=33911379]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.41503906)
+shape = SubResource("BoxShape3D_5d25b")
+
+[node name="InputIconMapper" parent="." unique_id=2136107125 instance=ExtResource("6_vqmpj")]

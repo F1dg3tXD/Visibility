@@ -5,7 +5,6 @@
 [ext_resource type="Script" uid="uid://bsje248o0codv" path="res://menuTemplate/scenes/menus/main_menu/main_menu_with_animations.gd" id="2_18k50"]
 [ext_resource type="PackedScene" uid="uid://c5ydcrusiu8sp" path="res://menuTemplate/scenes/windows/main_menu_options_window.tscn" id="3_4cctv"]
 [ext_resource type="PackedScene" uid="uid://hrr4hqriuu5e" path="res://menuTemplate/scenes/windows/main_menu_credits_window.tscn" id="4_deir1"]
-[ext_resource type="AudioStream" uid="uid://cd7kklvu614g2" path="res://music/No Time for Bathroom Breaks.ogg" id="6_4cctv"]
 [ext_resource type="PackedScene" uid="uid://dt8j10aiga62g" path="res://map/test_map.tscn" id="7_deir1"]
 
 [sub_resource type="Animation" id="1"]
@@ -292,7 +291,7 @@ states/Start/position = Vector2(82, 123)
 transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "OpenSubMenu", SubResource("14"), "Start", "Intro", SubResource("AnimationNodeStateMachineTransition_j0orr"), "OpenSubMenu", "OpenMainMenu", SubResource("AnimationNodeStateMachineTransition_63dxc")]
 graph_offset = Vector2(-180.277, 49)
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_deir1"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_4cctv"]
 viewport_path = NodePath("TestMap/Camera3D/SubViewport")
 
 [node name="MainMenu" unique_id=589811630 instance=ExtResource("1_virrg")]
@@ -302,14 +301,9 @@ offset_right = 1.0
 offset_bottom = -1.0
 theme = ExtResource("2_4cctv")
 script = ExtResource("2_18k50")
-game_scene_path = "res://map/test_game_map.tscn"
+game_scene_path = "uid://35ilcewewqib"
 options_packed_scene = ExtResource("3_4cctv")
 credits_packed_scene = ExtResource("4_deir1")
-signal_game_start = true
-
-[node name="BackgroundMusicPlayer" parent="." index="0" unique_id=1141822549]
-stream = ExtResource("6_4cctv")
-parameters/looping = true
 
 [node name="MenuAnimationPlayer" type="AnimationPlayer" parent="." index="1" unique_id=1492532975]
 libraries/ = SubResource("AnimationLibrary_2kqig")
@@ -320,7 +314,7 @@ anim_player = NodePath("../MenuAnimationPlayer")
 parameters/conditions/intro_done = false
 
 [node name="BackgroundTextureRect" parent="." index="3" unique_id=1940176448]
-texture = SubResource("ViewportTexture_deir1")
+texture = SubResource("ViewportTexture_4cctv")
 
 [node name="TitleContainer" parent="MenuContainer/TitleMargin" parent_id_path=PackedInt32Array(2112060331) index="0" unique_id=556427956]
 modulate = Color(1, 1, 1, 0)
@@ -330,7 +324,6 @@ offset_left = 1.0
 offset_top = -23.0
 offset_right = 1.0
 offset_bottom = 47.0
-text = ""
 
 [node name="No" type="Label" parent="MenuContainer/TitleMargin/TitleContainer/TitleLabel" index="0" unique_id=330707253]
 layout_mode = 0
@@ -389,7 +382,7 @@ modulate = Color(1, 1, 1, 0)
 [node name="SubTitleLabel" parent="MenuContainer/SubTitleMargin/SubTitleContainer" index="0" unique_id=1037003361]
 offset_top = 160.0
 offset_bottom = 195.0
-text = "I need to SHIT so bad"
+text = "I need to poop so bad"
 
 [node name="MenuButtonsContainer" parent="MenuContainer/MenuButtonsMargin" parent_id_path=PackedInt32Array(210553886) index="0" unique_id=116448484]
 modulate = Color(1, 1, 1, 0)
