@@ -1,0 +1,35 @@
+[gd_scene format=3 uid="uid://67wwgw5k8kkj"]
+
+[ext_resource type="PackedScene" uid="uid://b4no88ux5qbt2" path="res://models/StallDoor.glb" id="1_krmsm"]
+[ext_resource type="Script" uid="uid://cp6e2fmd01uuh" path="res://entities/stall_door.gd" id="2_gsq8e"]
+[ext_resource type="PackedScene" uid="uid://rtc2qmkduwp4" path="res://entities/interaction_volume.tscn" id="3_f642y"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_f642y"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_kiuyf"]
+size = Vector3(0.068359375, 0.97753906, 1.8681641)
+
+[node name="StallDoor" unique_id=1634050279 instance=ExtResource("1_krmsm")]
+script = ExtResource("2_gsq8e")
+
+[node name="Skeleton3D" parent="Armature" parent_id_path=PackedInt32Array(1158655762) index="0" unique_id=216745394]
+bones/1/rotation = Quaternion(0.7071068, -3.0908623e-08, -3.0908623e-08, 0.7071068)
+
+[node name="interactionVolume" parent="." index="2" unique_id=2147379566 instance=ExtResource("3_f642y")]
+transform = Transform3D(1, 0, -8.7422784e-08, -8.7422784e-08, 0, -1, 0, 1, 0, -0.13610256, 1, 0)
+collision_layer = 16777215
+collision_mask = 16777215
+
+[node name="promtGraphics" parent="interactionVolume" index="0" unique_id=1435343400]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4703484e-08, 0.5857105, -0.5881417)
+texture = SubResource("ViewportTexture_f642y")
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interactionVolume" index="2" unique_id=1374359734]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.072063714, 0.49459964, -0.35414743)
+shape = SubResource("BoxShape3D_kiuyf")
+
+[connection signal="interact_pressed" from="interactionVolume" to="." method="_on_interaction_volume_interact_pressed"]
+[connection signal="interacted" from="interactionVolume" to="." method="_on_interaction_volume_interacted"]
+
+[editable path="interactionVolume"]

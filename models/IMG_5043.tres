@@ -1,0 +1,14 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://biy1nb3jrob2p"]
+
+[ext_resource type="Texture2D" uid="uid://7tnq7i8gs3ur" path="res://models/floorplan_IMG_5043.png" id="1_fmwac"]
+
+[resource]
+resource_name = "IMG_5043"
+transparency = 1
+blend_mode = 3
+cull_mode = 1
+depth_draw_mode = 1
+albedo_texture = ExtResource("1_fmwac")
+roughness = 0.5
+texture_repeat = false
+metadata/_gltf_primary_texture_coord = 0

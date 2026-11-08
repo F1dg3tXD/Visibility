@@ -5,18 +5,26 @@ extends CharacterBody3D
 @onready var pickup: RayCast3D = $Head/RayCast3D
 @onready var crosshair: Control = $Crosshair
 @onready var no_check: Control = $no_check
+@onready var hand: Node3D = $Head/Hand
 
 # The time limit for the game is from here
 @onready var shit_meter: Control = $shitMeter
+@onready var footsteps: AudioStreamPlayer3D = $footsteps
+@onready var color_rect: ColorRect = $CRT/ColorRect
+
+@export_flags_3d_physics var interaction_collision_layers: int = 1
+var _current_interactable: Node = null
 
 var _flashing_no_check: bool = false
 var _flash_timer: float = 0.0
+var _bob_time: float = 0.0
+var _footstep_timer: float = 0.0
+var _light_on: bool = true
 
 var held_object: RigidBody3D = null
 
 @export var hold_distance: float = 2.0
 @export var hold_strength: float = 10.0
-
 
 var current_rwc: float = 0.0
 var current_idw: float = 1.0
@@ -45,11 +53,23 @@ var is_crouching: bool = false
 var target_height: float = STAND_HEIGHT
 var ice_spawned: bool = false
 
+func _get_interactable_from_collider(collider: Object) -> Node:
+	var node := collider as Node
+	while node != null:
+		if node.is_in_group("interactable") and node.has_method("interact"):
+			return node
+		node = node.get_parent()
+	return null
+
+
 func _ready() -> void:
+	add_to_group("player")
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
 	crosshair.visible = false
 	no_check.visible = false
+	pickup.collide_with_areas = true
+	pickup.collision_mask = pickup.collision_mask | interaction_collision_layers
 	if shit_meter:
 		shit_meter.warning_reached.connect(_on_shit_meter_warning)
 		shit_meter.time_ended.connect(_on_shit_meter_ended)
@@ -63,34 +83,94 @@ func _on_shit_meter_ended() -> void:
 	_flashing_no_check = false
 	no_check.visible = false
 
+
 func _input(event: InputEvent) -> void:
+	# Mouse look.
 	if event is InputEventMouseMotion:
 		yaw += event.relative.x * mouse_sensitivity
 		pitch += event.relative.y * mouse_sensitivity
-		pitch = clamp(pitch, -1.5, 1.5) # clamp vertical look
-
+		pitch = clamp(pitch, -1.5, 1.5)
 		rotation.y = -yaw
 		head.rotation.x = pitch
-		
-	if Input.is_action_just_pressed("interact"):
-		if held_object:
-			# Release object
+	# Interaction / pickup.
+	if event.is_action_pressed("interact"):
+		if event.is_echo():
+			return
+		# Refresh the raycast before deciding what we're looking at.
+		_update_interactable_target()
+		# INTERACTION TAKES PRIORITY.
+		if is_instance_valid(_current_interactable):
+			if _current_interactable.has_method("register_input_event"):
+				_current_interactable.call("register_input_event", event)
+			_current_interactable.call("interact")
+			get_viewport().set_input_as_handled()
+			return
+		# No interaction volume targeted.
+		# Preserve existing object pickup/release behavior.
+		if is_instance_valid(held_object):
 			held_object = null
-			#gun_animation_tree.set("parameters/conditions/isGrab", false)
-			#gun_animation_tree.set("parameters/conditions/!isGrab", true)
 			crosshair.visible = false
 		else:
-			# Try to pick up
+			held_object = null
 			if pickup.is_colliding():
 				var collider = pickup.get_collider()
-				#crosshair.visible = true
 				if collider is RigidBody3D:
-					crosshair.visible = true
 					held_object = collider
-					#gun_animation_tree.set("parameters/conditions/isGrab", true)
-					#gun_animation_tree.set("parameters/conditions/!isGrab", false)
+					crosshair.visible = true
+		get_viewport().set_input_as_handled()
+
 
 func _process(delta: float) -> void:
+	# Toggle light
+	if Input.is_action_just_pressed("toggle_light"):
+		_light_on = not _light_on
+		# rotate hand down when off
+		if _light_on:
+			hand.rotation.x = 0.0
+		else:
+			hand.rotation.x = deg_to_rad(60.0)
+	# Head/hand bob
+	var speed2d := Vector2(velocity.x, velocity.z).length()
+	var sprinting := Input.is_action_pressed("sprint") and speed2d > 0.1
+	var bob_speed := 12.0 if sprinting else 8.0
+	_bob_time += delta * bob_speed
+	# Footsteps
+	var sprinting2 := Input.is_action_pressed("sprint") and speed2d > 0.1
+	var interval := 0.5 if sprinting2 else 1.0
+	if speed2d > 0.1:
+		_footstep_timer += delta
+		if _footstep_timer >= interval:
+			_footstep_timer = 0.0
+			if footsteps:
+				footsteps.play()
+	else:
+		_footstep_timer = 0.0
+
+	# CRT overlay param update (find ColorRect material)
+	var crt_mat: ShaderMaterial = null
+	for n in get_tree().get_nodes_in_group("crt_overlay"):
+		if n is ColorRect and n.material is ShaderMaterial:
+			crt_mat = n.material
+			break
+	if crt_mat and shit_meter:
+		var ratio := clampf(shit_meter._elapsed / shit_meter.TimeLimit, 0.0, 1.0) if shit_meter.has("_elapsed") else 0.0
+		# curve ramps after 50%
+		var curve_val := 0.0
+		if ratio > 0.5:
+			curve_val = (ratio - 0.5) * 1.0
+		crt_mat.set_shader_parameter("curve", curve_val)
+		# resolution worsens after WarningTime
+		var res := Vector2(1920, 1080)
+		if ratio >= shit_meter.WarningTime:
+			var t: float = (ratio - shit_meter.WarningTime) / (1.0 - shit_meter.WarningTime)
+			var size := lerpf(1080.0, 240.0, t)
+			res = Vector2(size, size)
+		crt_mat.set_shader_parameter("resolution_override", res)
+	var bob_amount := clampf(speed2d / 5.0, 0.0, 1.0)
+	var capsule := collision_shape_3d.shape as CapsuleShape3D
+	var base_head_y := target_height * 0.5 + capsule.radius
+	head.position.y = base_head_y + sin(_bob_time) * 0.05 * bob_amount
+	hand.position.y = sin(_bob_time + 0.5) * 0.03 * bob_amount
 	if _flashing_no_check:
 		_flash_timer += delta
 		if _flash_timer >= 0.25:
@@ -175,18 +255,51 @@ func stop_crouch() -> void:
 
 	# --- Smooth blend between RWC states ---
 	var speed2d := Vector2(velocity.x, velocity.z).length()
-	var target_rwc: float = 0.0
-	var target_idw: float = 1.0
+	var _target_rwc: float = 0.0
+	var _target_idw: float = 1.0
 
 	if is_crouching:
-		target_rwc = -1.0
-		target_idw = 1.0
+		_target_rwc = -1.0
+		_target_idw = 1.0
 	elif speed2d < SPEED * 0.5:
-		target_rwc = 0.0
-		target_idw = 1.0
+		_target_rwc = 0.0
+		_target_idw = 1.0
 	else:
-		target_rwc = 1.0
-		target_idw = 0.0
+		_target_rwc = 1.0
+		_target_idw = 0.0
 
 	# Smoothly lerp stored values
-	var blend_speed := 5.0
+	var _blend_speed := 5.0
+	
+# Update which interaction volume the player is currently targeting.
+func _update_interactable_target() -> void:
+	if not is_instance_valid(pickup):
+		return
+	pickup.force_raycast_update()
+	var next_interactable: Node = null
+	if pickup.is_colliding():
+		next_interactable = _get_interactable_from_collider(
+			pickup.get_collider()
+		)
+
+	# No change in target.
+	if next_interactable == _current_interactable:
+		if next_interactable == null:
+			return
+		if is_instance_valid(_current_interactable):
+			return
+
+	# Hide the previous interaction prompt.
+	if is_instance_valid(_current_interactable):
+		if _current_interactable.has_method("set_hovered"):
+			_current_interactable.call("set_hovered", false)
+	_current_interactable = next_interactable
+	# Show the new interaction prompt.
+	if is_instance_valid(_current_interactable):
+		if _current_interactable.has_method("set_hovered"):
+			_current_interactable.call("set_hovered", true)
+
+func _exit_tree() -> void:
+	if is_instance_valid(_current_interactable):
+		if _current_interactable.has_method("set_hovered"):
+			_current_interactable.call("set_hovered", false)

@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://cd5at7w0pum17"]
+
+[ext_resource type="PackedScene" uid="uid://dswaoewh80x05" path="res://models/floorplan.glb" id="1_j7gli"]
+
+[node name="floorplan" unique_id=1278396312 instance=ExtResource("1_j7gli")]

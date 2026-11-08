@@ -1,0 +1,42 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://ndaqojdh26t1"]
+
+[ext_resource type="Texture2D" uid="uid://c5v2a61y02tv0" path="res://player/flashlight_DefaultMaterial_baseColor.jpg" id="1_jbqux"]
+[ext_resource type="Texture2D" uid="uid://otbdyy5etaql" path="res://player/flashlight_DefaultMaterial_metallicRoughness.png" id="2_yuqxc"]
+[ext_resource type="Texture2D" uid="uid://coa0164xysv88" path="res://player/flashlight_DefaultMaterial_emissive.jpg" id="3_jdi8e"]
+[ext_resource type="Texture2D" uid="uid://h7qvp4fy0o8r" path="res://player/flashlight_DefaultMaterial_normal.png" id="4_qwdqe"]
+
+[sub_resource type="StandardMaterial3D" id="StandardMaterial3D_jbqux"]
+render_priority = 1
+transparency = 1
+shading_mode = 0
+albedo_color = Color(1, 0, 0, 1)
+grow = true
+grow_amount = 0.003
+stencil_mode = 3
+stencil_flags = 1
+stencil_compare = 5
+metadata/_stencil_owned = true
+
+[resource]
+resource_name = "DefaultMaterial"
+next_pass = SubResource("StandardMaterial3D_jbqux")
+cull_mode = 2
+albedo_texture = ExtResource("1_jbqux")
+metallic = 1.0
+metallic_texture = ExtResource("2_yuqxc")
+metallic_texture_channel = 2
+roughness_texture = ExtResource("2_yuqxc")
+roughness_texture_channel = 1
+emission_enabled = true
+emission = Color(1, 1, 1, 1)
+emission_operator = 1
+emission_texture = ExtResource("3_jdi8e")
+normal_enabled = true
+normal_texture = ExtResource("4_qwdqe")
+ao_enabled = true
+ao_texture = ExtResource("2_yuqxc")
+stencil_mode = 1
+stencil_flags = 2
+stencil_color = Color(1, 0, 0, 1)
+stencil_outline_thickness = 0.003
+metadata/_gltf_primary_texture_coord = 0

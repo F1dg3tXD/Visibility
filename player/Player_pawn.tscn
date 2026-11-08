@@ -3,13 +3,56 @@
 [ext_resource type="Texture2D" uid="uid://jxlgr5g8cnvr" path="res://menuTemplate/assets/kenney_input-prompts/Generic/Vector/generic_button_circle_outline.svg" id="1_6rst4"]
 [ext_resource type="Script" uid="uid://0ftyk5nonykf" path="res://player/player_pawn.gd" id="1_h1dtg"]
 [ext_resource type="Theme" uid="uid://ckb4kyhteioow" path="res://themes/UI_Theme.tres" id="2_2oxxa"]
+[ext_resource type="PackedScene" uid="uid://cq8i527qtyfj" path="res://player/flashlight.glb" id="2_d4thf"]
+[ext_resource type="Shader" uid="uid://b3rkas84gon5g" path="res://shaders/crt.gdshader" id="2_m8fwx"]
 [ext_resource type="PackedScene" uid="uid://bspfq8628cygl" path="res://ui/shit_meter.tscn" id="3_jms7b"]
+[ext_resource type="AudioStream" uid="uid://cttqlf5xvxt04" path="res://sfx/step0.ogg" id="7_cksw0"]
+[ext_resource type="AudioStream" uid="uid://d04a5igqfei8e" path="res://sfx/step1.ogg" id="8_dhyw8"]
+[ext_resource type="AudioStream" uid="uid://bb7r4b3qdl3t2" path="res://sfx/step2.ogg" id="9_653fh"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j6vuq"]
 radius = 0.4
 
-[node name="Player_pawn" type="CharacterBody3D" unique_id=1481347071 groups=["player_pawn"]]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_m8fwx"]
+resource_local_to_scene = true
+shader = ExtResource("2_m8fwx")
+shader_parameter/mask_type = 1
+shader_parameter/curve = 0.0
+shader_parameter/resolution_override = Vector2(0, 0)
+shader_parameter/sharpness = 0.6666667
+shader_parameter/color_offset = 0.0
+shader_parameter/mask_brightness = 1.0
+shader_parameter/scanline_brightness = 1.0
+shader_parameter/min_scanline_thickness = 0.5
+shader_parameter/aspect = 0.75
+shader_parameter/wobble_strength = 0.0
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_xyh8e"]
+shader = ExtResource("2_m8fwx")
+shader_parameter/mask_type = 4
+shader_parameter/curve = 0.0
+shader_parameter/resolution_override = Vector2(0, 0)
+shader_parameter/sharpness = 0.7130000101175
+shader_parameter/color_offset = 0.0
+shader_parameter/mask_brightness = 1.0
+shader_parameter/scanline_brightness = 1.0
+shader_parameter/min_scanline_thickness = 0.6390000184775
+shader_parameter/aspect = 0.75
+shader_parameter/wobble_strength = 1.0
+
+[sub_resource type="AudioStreamRandomizer" id="AudioStreamRandomizer_5d25b"]
+random_pitch = 1.0174797
+random_volume_offset_db = 10.0
+streams_count = 3
+stream_0/stream = ExtResource("7_cksw0")
+stream_1/stream = ExtResource("8_dhyw8")
+stream_2/stream = ExtResource("9_653fh")
+
+[node name="Player_pawn" type="CharacterBody3D" unique_id=1481347071 groups=["player"]]
 script = ExtResource("1_h1dtg")
+SPEED = 2.0
+RUN_SPEED = 4.0
+JUMP_VELOCITY = 0.0
 
 [node name="CollisionShape3D" type="CollisionShape3D" parent="." unique_id=388220360]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1, 0)
@@ -18,14 +61,30 @@ shape = SubResource("CapsuleShape3D_j6vuq")
 [node name="Head" type="Node3D" parent="." unique_id=1073334736]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
+[node name="RayCast3D" type="RayCast3D" parent="Head" unique_id=988528935]
+target_position = Vector3(0, 0, 2)
+collision_mask = 16777215
+hit_from_inside = true
+collide_with_areas = true
+
 [node name="Camera3D" type="Camera3D" parent="Head" unique_id=265005412]
 transform = Transform3D(-1, 0, 8.742278e-08, 0, 1, 0, -8.742278e-08, 0, -1, 0, 0, 0)
 
-[node name="RayCast3D" type="RayCast3D" parent="Head" unique_id=988528935]
-target_position = Vector3(0, 0, 5)
-
 [node name="Hand" type="Node3D" parent="Head" unique_id=39238264]
 transform = Transform3D(0.9956308, 0.011553823, 0.09265984, -0.01150411, 0.99993324, -0.0010706468, -0.09266602, 0, 0.99569726, -0.40245104, -0.26922417, 0.52492017)
+
+[node name="flashlight" parent="Head/Hand" unique_id=431995809 instance=ExtResource("2_d4thf")]
+transform = Transform3D(2.98003, 0.027795836, -0.3152411, 0.016998513, 3.27832, 0.19022891, 0.45931327, -0.30166537, 2.038248, 0.022547036, -0.19166827, -0.21836993)
+
+[node name="SpotLight3D" type="SpotLight3D" parent="Head/Hand/flashlight" unique_id=522457395]
+transform = Transform3D(-0.9722955, -0.042952698, -0.2297748, -0.042886805, 0.99906594, -0.0052831266, 0.22978711, 0.004717547, -0.97322947, -0.008034855, 0, 0.12568486)
+layers = 1048575
+light_color = Color(0.61960787, 0, 1, 1)
+light_energy = 10.0
+light_volumetric_fog_energy = 10.0
+shadow_enabled = true
+spot_range = 12.0
+spot_angle = 38.0
 
 [node name="Crosshair" type="Control" parent="." unique_id=1715012261]
 layout_mode = 3
@@ -95,5 +154,37 @@ vertical_alignment = 1
 [node name="shitMeter" parent="." unique_id=1603831890 instance=ExtResource("3_jms7b")]
 TimeLimit = 120.0
 WarningTime = 0.8
+
+[node name="ColorRect" type="ColorRect" parent="shitMeter" unique_id=364155489]
+material = SubResource("ShaderMaterial_m8fwx")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="CRT" type="Control" parent="." unique_id=93925192]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="ColorRect" type="ColorRect" parent="CRT" unique_id=1501276799]
+material = SubResource("ShaderMaterial_xyh8e")
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="footsteps" type="AudioStreamPlayer3D" parent="." unique_id=54682544]
+stream = SubResource("AudioStreamRandomizer_5d25b")
+volume_db = -20.0
+autoplay = true
+bus = &"SFX"
 
 [editable path="shitMeter"]
