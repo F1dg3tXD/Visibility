@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://wpfd5gvmhqcm"]
+
+[ext_resource type="PackedScene" uid="uid://s88v128ckobm" path="res://models/Exit.glb" id="1_j5ypy"]
+
+[node name="Exit2" unique_id=1786986311 instance=ExtResource("1_j5ypy")]

@@ -5,6 +5,17 @@
 [ext_resource type="PackedScene" uid="uid://67wwgw5k8kkj" path="res://entities/stall_door.tscn" id="3_7i0nl"]
 [ext_resource type="PackedScene" uid="uid://duc8bw4kkov65" path="res://menuTemplate/scenes/menus/options_menu/input/input_icon_mapper.tscn" id="4_yy4ic"]
 [ext_resource type="PackedScene" uid="uid://blstrvusmss87" path="res://player/Player_pawn.tscn" id="5_w62l1"]
+[ext_resource type="PackedScene" uid="uid://vdhv7dgre2aa" path="res://entities/toilet.tscn" id="6_xkvua"]
+[ext_resource type="PackedScene" uid="uid://brqj0scnnayyp" path="res://entities/urinal.tscn" id="7_7gs5u"]
+[ext_resource type="PackedScene" uid="uid://br1n7153swxad" path="res://map/why_ending.tscn" id="8_jmnfd"]
+[ext_resource type="PackedScene" uid="uid://b8jtwl01fs71e" path="res://models/TP.glb" id="9_n8y6y"]
+[ext_resource type="PackedScene" uid="uid://blp3t257g1xol" path="res://models/keypad.glb" id="10_clht8"]
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_n8y6y"]
+viewport_path = NodePath("SubViewport")
+
+[sub_resource type="ViewportTexture" id="ViewportTexture_clht8"]
+viewport_path = NodePath("SubViewport")
 
 [node name="bathroom" type="Node3D" unique_id=1137359579]
 
@@ -29,7 +40,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.3299131, 0)
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, -8.511088, 1, 27.32433)
 
 [node name="StallDoor2" parent="mapRoot" unique_id=650011180 instance=ExtResource("3_7i0nl")]
-transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, -8.511088, 1, 23.32433)
+transform = Transform3D(-1.9999995, 0, -1.7484552e-07, 0, 1.9999995, 0, 1.7484552e-07, 0, -1.9999995, -8.510801, 0.99999976, 23.321262)
 
 [node name="StallDoor3" parent="mapRoot" unique_id=1733823732 instance=ExtResource("3_7i0nl")]
 transform = Transform3D(-2, 0, -1.7484555e-07, 0, 2, 0, 1.7484555e-07, 0, -2, -8.511088, 1, 19.32433)
@@ -66,3 +77,103 @@ transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.4889107, 1, 21.324326)
 
 [node name="StallDoor14" parent="mapRoot" unique_id=1322443973 instance=ExtResource("3_7i0nl")]
 transform = Transform3D(2, 0, 0, 0, 2, 0, 0, 0, 2, 2.4889107, 1, 25.324326)
+
+[node name="toilet2" parent="mapRoot" unique_id=1265866806 instance=ExtResource("6_xkvua")]
+transform = Transform3D(-7.285228e-08, 0, -1.6666663, 0, 1.6666663, 0, 1.6666663, 0, -7.285228e-08, 7.8125963, 2.387976, 26.170721)
+
+[node name="toilet3" parent="mapRoot" unique_id=849957171 instance=ExtResource("6_xkvua")]
+transform = Transform3D(-7.285228e-08, 0, -1.6666663, 0, 1.6666663, 0, 1.6666663, 0, -7.285228e-08, 7.8125963, 2.387976, 17.837387)
+
+[node name="toilet4" parent="mapRoot" unique_id=260642833 instance=ExtResource("6_xkvua")]
+transform = Transform3D(-7.285228e-08, 0, -1.6666663, 0, 1.6666663, 0, 1.6666663, 0, -7.285228e-08, 7.8125963, 2.387976, 14.504053)
+
+[node name="toilet5" parent="mapRoot" unique_id=1131245677 instance=ExtResource("6_xkvua")]
+transform = Transform3D(-7.285228e-08, 0, -1.6666663, 0, 1.6666663, 0, 1.6666663, 0, -7.285228e-08, 7.8125963, 2.387976, 6.427212)
+
+[node name="toilet6" parent="mapRoot" unique_id=771184891 instance=ExtResource("6_xkvua")]
+transform = Transform3D(-7.2852316e-08, 0, 1.6666663, 0, 1.6666663, 0, -1.6666663, 0, -7.2852316e-08, -13.854069, 2.387976, 2.2223685)
+
+[node name="toilet7" parent="mapRoot" unique_id=513360616 instance=ExtResource("6_xkvua")]
+transform = Transform3D(-7.2852316e-08, 0, 1.6666663, 0, 1.6666663, 0, -1.6666663, 0, -7.2852316e-08, -13.854069, 2.387976, 10.263358)
+
+[node name="toilet8" parent="mapRoot" unique_id=1693864375 instance=ExtResource("6_xkvua")]
+transform = Transform3D(-7.2852316e-08, 0, 1.6666663, 0, 1.6666663, 0, -1.6666663, 0, -7.2852316e-08, -13.854069, 2.387976, 14.269561)
+
+[node name="toilet9" parent="mapRoot" unique_id=1879804973 instance=ExtResource("6_xkvua")]
+transform = Transform3D(-7.2852316e-08, 0, 1.6666663, 0, 1.6666663, 0, -1.6666663, 0, -7.2852316e-08, -13.854069, 2.387976, 18.344967)
+
+[node name="urinal2" parent="mapRoot" unique_id=1614435163 instance=ExtResource("7_7gs5u")]
+transform = Transform3D(1.6666665, 0, 0, 0, 1.6666665, 0, 0, 0, 1.6666665, -13.703551, 1.5685211, 48.702904)
+
+[node name="urinal3" parent="mapRoot" unique_id=1346643531 instance=ExtResource("7_7gs5u")]
+transform = Transform3D(1.6666664, 0, 0, 0, 1.6666664, 0, 0, 0, 1.6666664, -13.70355, 1.568521, 47.036232)
+
+[node name="urinal4" parent="mapRoot" unique_id=704202650 instance=ExtResource("7_7gs5u")]
+transform = Transform3D(1.6666663, 0, 0, 0, 1.6666663, 0, 0, 0, 1.6666663, -13.70355, 1.5685209, 45.369564)
+
+[node name="urinal5" parent="mapRoot" unique_id=1508335101 instance=ExtResource("7_7gs5u")]
+transform = Transform3D(1.6666664, 0, 0, 0, 1.6666664, 0, 0, 0, 1.6666664, -13.70355, 1.568521, 43.7029)
+
+[node name="urinal6" parent="mapRoot" unique_id=1105208897 instance=ExtResource("7_7gs5u")]
+transform = Transform3D(1.6666663, 0, 0, 0, 1.6666663, 0, 0, 0, 1.6666663, -13.70355, 1.5685209, 42.036232)
+
+[node name="urinal7" parent="mapRoot" unique_id=2019064904 instance=ExtResource("7_7gs5u")]
+transform = Transform3D(1.6666663, 0, 0, 0, 1.6666663, 0, 0, 0, 1.6666663, -13.70355, 1.5685208, 40.36956)
+
+[node name="urinal8" parent="mapRoot" unique_id=2088852599 instance=ExtResource("7_7gs5u")]
+transform = Transform3D(1.6666663, 0, 0, 0, 1.6666663, 0, 0, 0, 1.6666663, -13.70355, 1.5685209, 38.702896)
+
+[node name="urinal9" parent="mapRoot" unique_id=2035162213 instance=ExtResource("7_7gs5u")]
+transform = Transform3D(1.6666663, 0, 0, 0, 1.6666663, 0, 0, 0, 1.6666663, -13.70355, 1.5685208, 37.036232)
+
+[node name="urinal10" parent="mapRoot" unique_id=938642546 instance=ExtResource("7_7gs5u")]
+transform = Transform3D(1.6666663, 0, 0, 0, 1.6666663, 0, 0, 0, 1.6666663, -13.70355, 1.5685207, 35.369556)
+
+[node name="whyEnding" parent="." unique_id=950268038 instance=ExtResource("8_jmnfd")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -7.7770996, 1.5539985, 25.288609)
+
+[node name="EndingTrigger" parent="whyEnding" index="0" unique_id=1647937448]
+visible = true
+
+[node name="toiletpaper2" parent="." unique_id=2122515930 instance=ExtResource("9_n8y6y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.9290693, 0.6005517, 13.915264)
+
+[node name="toiletpaper3" parent="." unique_id=1952447997 instance=ExtResource("9_n8y6y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 3.5530167, 0.60055196, 12.667046)
+
+[node name="toiletpaper4" parent="." unique_id=182247775 instance=ExtResource("9_n8y6y")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -8.094004, 1.5874052, 21.174795)
+
+[node name="toiletpaper5" parent="." unique_id=1359559104 instance=ExtResource("9_n8y6y")]
+transform = Transform3D(0.49999997, 0.86602545, 3.7855173e-08, 0, -4.371139e-08, 1, 0.86602545, -0.49999997, -2.1855692e-08, -1.1862537, 0.60055184, 5.369074)
+
+[node name="toiletpaper6" parent="." unique_id=74799902 instance=ExtResource("9_n8y6y")]
+transform = Transform3D(-0.2714984, 0.9624389, 4.2069537e-08, 0, -4.371139e-08, 1, 0.9624389, 0.2714984, 1.1867574e-08, -3.1862535, 0.60055184, 5.369074)
+
+[node name="toiletpaper7" parent="." unique_id=978804876 instance=ExtResource("9_n8y6y")]
+transform = Transform3D(-0.2714984, 0.9624389, 4.2069537e-08, 0, -4.371139e-08, 1, 0.9624389, 0.2714984, 1.1867574e-08, -5.212113, 0.60055184, 7.369074)
+
+[node name="toiletpaper8" parent="." unique_id=1417065116 instance=ExtResource("9_n8y6y")]
+transform = Transform3D(-0.99793893, 0.06417039, 2.8049747e-09, -4.4956597e-16, -4.3711392e-08, 1, 0.06417039, 0.99793893, 4.3621295e-08, -6.812917, 0.60055184, 3.9556952)
+
+[node name="StallDoor" parent="." unique_id=631868935 instance=ExtResource("3_7i0nl")]
+transform = Transform3D(-4.3711385e-08, 0, 3.0203886, 0, 1, 0, -0.99999994, 0, -1.3202539e-07, -3.3065126, 0.5999999, -0.60782814)
+
+[node name="promtGraphics" parent="StallDoor/interactionVolume" parent_id_path=PackedInt32Array(631868935, 2147379566) index="0" unique_id=1435343400]
+texture = SubResource("ViewportTexture_n8y6y")
+
+[node name="StallDoor2" parent="." unique_id=1430406774 instance=ExtResource("3_7i0nl")]
+transform = Transform3D(-4.3711385e-08, 0, 3.0203886, 0, 1, 0, -0.99999994, 0, -1.3202539e-07, -3.3065126, 0.5999999, -0.60782814)
+
+[node name="promtGraphics" parent="StallDoor2/interactionVolume" parent_id_path=PackedInt32Array(1430406774, 2147379566) index="0" unique_id=1435343400]
+texture = SubResource("ViewportTexture_clht8")
+
+[node name="keypad" parent="." unique_id=1237354259 instance=ExtResource("10_clht8")]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38722834, 1.9213568, -0.59419304)
+
+[editable path="whyEnding"]
+[editable path="whyEnding/EndingTrigger"]
+[editable path="StallDoor"]
+[editable path="StallDoor/interactionVolume"]
+[editable path="StallDoor2"]
+[editable path="StallDoor2/interactionVolume"]

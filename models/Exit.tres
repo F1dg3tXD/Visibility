@@ -1,0 +1,9 @@
+[gd_resource type="StandardMaterial3D" format=3 uid="uid://bp3avs180crqb"]
+
+[resource]
+resource_name = "Exit"
+cull_mode = 2
+albedo_color = Color(0.9063355, 0, 0.048995435, 1)
+roughness = 0.5
+emission_enabled = true
+emission = Color(1, 0, 0.007870209, 1)

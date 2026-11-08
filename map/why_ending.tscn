@@ -1,0 +1,33 @@
+[gd_scene format=3 uid="uid://br1n7153swxad"]
+
+[ext_resource type="Script" uid="uid://7rnlgloohld" path="res://map/why_ending.gd" id="1_hmd3y"]
+[ext_resource type="PackedScene" uid="uid://728jju08h4dn" path="res://entities/ending_trigger.tscn" id="2_d8ntv"]
+[ext_resource type="PackedScene" uid="uid://rtc2qmkduwp4" path="res://entities/interaction_volume.tscn" id="3_7c1rk"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5d25b"]
+size = Vector3(3.8544922, 3.7675781, 8.697266)
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_7ix2u"]
+size = Vector3(0.40576172, 1.9102783, 9.027344)
+
+[node name="whyEnding" type="Node3D" unique_id=950268038]
+script = ExtResource("1_hmd3y")
+
+[node name="EndingTrigger" parent="." unique_id=1647937448 instance=ExtResource("2_d8ntv")]
+visible = false
+ending_type = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EndingTrigger" unique_id=1913615161]
+shape = SubResource("BoxShape3D_5d25b")
+
+[node name="interactionVolume" parent="." unique_id=2147379566 instance=ExtResource("3_7c1rk")]
+collision_layer = 2
+collision_mask = 2
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="interactionVolume" unique_id=2067893494]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -0.29711914, 0.45513916, 0)
+shape = SubResource("BoxShape3D_7ix2u")
+
+[connection signal="interact_pressed" from="interactionVolume" to="." method="_on_interaction_volume_interact_pressed"]
+
+[editable path="EndingTrigger"]

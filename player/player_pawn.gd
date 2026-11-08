@@ -9,10 +9,11 @@ extends CharacterBody3D
 
 # The time limit for the game is from here
 @onready var shit_meter: Control = $shitMeter
+@onready var ending_screen: Control = $EndingScreen
 @onready var footsteps: AudioStreamPlayer3D = $footsteps
-@onready var color_rect: ColorRect = $CRT/ColorRect
 
-@export_flags_3d_physics var interaction_collision_layers: int = 1
+
+@export_flags_3d_physics var interaction_collision_layers: int = 3
 var _current_interactable: Node = null
 
 var _flashing_no_check: bool = false
@@ -83,6 +84,23 @@ func _on_shit_meter_ended() -> void:
 	_flashing_no_check = false
 	no_check.visible = false
 
+func show_ending(ending_type: int) -> void:
+	if ending_screen == null:
+		return
+	match ending_type:
+		0:
+			if ending_screen.has_method("show_win"):
+				ending_screen.show_win()
+		1:
+			if ending_screen.has_method("show_loose"):
+				ending_screen.show_loose()
+		2:
+			if ending_screen.has_method("show_why"):
+				ending_screen.show_why()
+		3:
+			if ending_screen.has_method("show_death"):
+				ending_screen.show_death()
+
 
 func _input(event: InputEvent) -> void:
 	# Mouse look.
@@ -121,6 +139,7 @@ func _input(event: InputEvent) -> void:
 
 
 func _process(delta: float) -> void:
+	_update_interactable_target()
 	# Toggle light
 	if Input.is_action_just_pressed("toggle_light"):
 		_light_on = not _light_on
@@ -273,6 +292,7 @@ func stop_crouch() -> void:
 	
 # Update which interaction volume the player is currently targeting.
 func _update_interactable_target() -> void:
+	print("pickup")
 	if not is_instance_valid(pickup):
 		return
 	pickup.force_raycast_update()
@@ -285,21 +305,27 @@ func _update_interactable_target() -> void:
 	# No change in target.
 	if next_interactable == _current_interactable:
 		if next_interactable == null:
+			#print("_current_interactable")
 			return
 		if is_instance_valid(_current_interactable):
+			#print("_current_interactable")
 			return
 
 	# Hide the previous interaction prompt.
 	if is_instance_valid(_current_interactable):
 		if _current_interactable.has_method("set_hovered"):
 			_current_interactable.call("set_hovered", false)
+			print(_current_interactable)
 	_current_interactable = next_interactable
+	print(_current_interactable)
 	# Show the new interaction prompt.
 	if is_instance_valid(_current_interactable):
 		if _current_interactable.has_method("set_hovered"):
 			_current_interactable.call("set_hovered", true)
+			print(_current_interactable)
 
 func _exit_tree() -> void:
 	if is_instance_valid(_current_interactable):
 		if _current_interactable.has_method("set_hovered"):
 			_current_interactable.call("set_hovered", false)
+			print(_current_interactable)

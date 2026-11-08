@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://ct66ai420rlub"]
+
+[ext_resource type="PackedScene" uid="uid://blp3t257g1xol" path="res://models/keypad.glb" id="1_2owo1"]
+
+[node name="keypad" unique_id=1237354259 instance=ExtResource("1_2owo1")]

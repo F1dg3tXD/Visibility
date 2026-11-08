@@ -2,9 +2,6 @@
 
 [ext_resource type="Script" uid="uid://dv3xwb1hf2u3v" path="res://ui/ending_screen.gd" id="1_2t43f"]
 [ext_resource type="Texture2D" uid="uid://bq1xrxpf48x5q" path="res://textures/win.png" id="1_5i7lb"]
-[ext_resource type="Texture2D" uid="uid://i6cksybfd0f7" path="res://textures/loose.png" id="3_firw1"]
-[ext_resource type="Texture2D" uid="uid://ci8vclcp01kqe" path="res://textures/why.png" id="4_fgx3f"]
-[ext_resource type="Texture2D" uid="uid://tm2mkcmrjke" path="res://textures/die.png" id="5_ipxrw"]
 
 [node name="EndingScreen" type="Control" unique_id=938635337]
 layout_mode = 3
@@ -14,10 +11,6 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_2t43f")
-WinImage = ExtResource("1_5i7lb")
-LooseImage = ExtResource("3_firw1")
-WhyEnding = ExtResource("4_fgx3f")
-DeathEnding = ExtResource("5_ipxrw")
 
 [node name="TextureRect" type="TextureRect" parent="." unique_id=348326936]
 layout_mode = 1

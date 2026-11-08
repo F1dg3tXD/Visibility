@@ -1,0 +1,6 @@
+[gd_scene format=3 uid="uid://728jju08h4dn"]
+
+[ext_resource type="Script" uid="uid://btyg00qm71n2u" path="res://entities/ending_trigger.gd" id="1_ahlx8"]
+
+[node name="EndingTrigger" type="Area3D" unique_id=1647937448]
+script = ExtResource("1_ahlx8")

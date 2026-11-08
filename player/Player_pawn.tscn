@@ -7,8 +7,13 @@
 [ext_resource type="Shader" uid="uid://b3rkas84gon5g" path="res://shaders/crt.gdshader" id="2_m8fwx"]
 [ext_resource type="PackedScene" uid="uid://bspfq8628cygl" path="res://ui/shit_meter.tscn" id="3_jms7b"]
 [ext_resource type="AudioStream" uid="uid://cttqlf5xvxt04" path="res://sfx/step0.ogg" id="7_cksw0"]
+[ext_resource type="PackedScene" uid="uid://15f2ffru2kg5" path="res://ui/ending_screen.tscn" id="7_dhyw8"]
+[ext_resource type="Texture2D" uid="uid://bq1xrxpf48x5q" path="res://textures/win.png" id="8_57n4n"]
 [ext_resource type="AudioStream" uid="uid://d04a5igqfei8e" path="res://sfx/step1.ogg" id="8_dhyw8"]
 [ext_resource type="AudioStream" uid="uid://bb7r4b3qdl3t2" path="res://sfx/step2.ogg" id="9_653fh"]
+[ext_resource type="Texture2D" uid="uid://i6cksybfd0f7" path="res://textures/loose.png" id="9_barsx"]
+[ext_resource type="Texture2D" uid="uid://ci8vclcp01kqe" path="res://textures/why.png" id="10_l4821"]
+[ext_resource type="Texture2D" uid="uid://tm2mkcmrjke" path="res://textures/die.png" id="11_4f05y"]
 
 [sub_resource type="CapsuleShape3D" id="CapsuleShape3D_j6vuq"]
 radius = 0.4
@@ -50,6 +55,7 @@ stream_2/stream = ExtResource("9_653fh")
 
 [node name="Player_pawn" type="CharacterBody3D" unique_id=1481347071 groups=["player"]]
 script = ExtResource("1_h1dtg")
+interaction_collision_layers = 2
 SPEED = 2.0
 RUN_SPEED = 4.0
 JUMP_VELOCITY = 0.0
@@ -63,7 +69,7 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.5, 0)
 
 [node name="RayCast3D" type="RayCast3D" parent="Head" unique_id=988528935]
 target_position = Vector3(0, 0, 2)
-collision_mask = 16777215
+collision_mask = 2
 hit_from_inside = true
 collide_with_areas = true
 
@@ -147,13 +153,7 @@ SHIT EMINENT"
 horizontal_alignment = 1
 vertical_alignment = 1
 
-[node name="footTargetL" type="Node3D" parent="." unique_id=791958984]
-
-[node name="footTargetR" type="Node3D" parent="." unique_id=225843222]
-
 [node name="shitMeter" parent="." unique_id=1603831890 instance=ExtResource("3_jms7b")]
-TimeLimit = 120.0
-WarningTime = 0.8
 
 [node name="ColorRect" type="ColorRect" parent="shitMeter" unique_id=364155489]
 material = SubResource("ShaderMaterial_m8fwx")
@@ -163,6 +163,15 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+
+[node name="EndingScreen" parent="." unique_id=1841436574 instance=ExtResource("7_dhyw8")]
+WinImage = ExtResource("8_57n4n")
+LooseImage = ExtResource("9_barsx")
+WhyEnding = ExtResource("10_l4821")
+DeathEnding = ExtResource("11_4f05y")
+
+[node name="TextureRect" parent="EndingScreen" index="0" unique_id=348326936]
+visible = false
 
 [node name="CRT" type="Control" parent="." unique_id=93925192]
 layout_mode = 3
@@ -181,6 +190,8 @@ anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
 
+[node name="EndingScreen2" parent="." unique_id=938635337 instance=ExtResource("7_dhyw8")]
+
 [node name="footsteps" type="AudioStreamPlayer3D" parent="." unique_id=54682544]
 stream = SubResource("AudioStreamRandomizer_5d25b")
 volume_db = -20.0
@@ -188,3 +199,4 @@ autoplay = true
 bus = &"SFX"
 
 [editable path="shitMeter"]
+[editable path="EndingScreen"]

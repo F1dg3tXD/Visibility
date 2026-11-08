@@ -38,7 +38,6 @@ func _find_input_icon_mapper(node: Node) -> InputIconMapper:
 		var found := _find_input_icon_mapper(child)
 		if found:
 			return found
-
 	return null
 
 
@@ -92,13 +91,31 @@ func register_input_event(event: InputEvent) -> void:
 
 	if _is_hovered:
 		_update_input_icon()
-
+		print("Hover")
+	#print("no Hover")
 
 func _input(event: InputEvent) -> void:
 	register_input_event(event)
+
+func _process(_delta: float) -> void:
+	var player = get_tree().get_first_node_in_group("player")
+	var hitting := false
+	if player:
+		var ray: RayCast3D = player.get_node_or_null("Head/RayCast3D")
+		if ray and ray.is_colliding():
+			var node := ray.get_collider() as Node
+			while node != null:
+				if node == self:
+					hitting = true
+					break
+				node = node.get_parent()
+	set_hovered(hitting)
+	#print("Got Input")
 
 
 # Called by the player when the interact action is pressed.
 func interact() -> void:
 	interact_pressed.emit()
+	print("Interacting")
 	interacted.emit()
+	print("Interacting Done")

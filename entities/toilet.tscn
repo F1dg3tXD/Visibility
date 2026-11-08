@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://vdhv7dgre2aa"]
+
+[ext_resource type="PackedScene" uid="uid://ddfs6xebfl7o6" path="res://models/toilet.glb" id="1_akkfy"]
+
+[node name="toilet2" unique_id=1265866806 instance=ExtResource("1_akkfy")]
+
+[node name="toilet" parent="." index="0" unique_id=938693335]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, 0)

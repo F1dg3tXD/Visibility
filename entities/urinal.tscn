@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://brqj0scnnayyp"]
+
+[ext_resource type="PackedScene" uid="uid://ddrv6vpv2u4f" path="res://models/urinal.glb" id="1_7gvek"]
+
+[node name="urinal2" unique_id=1614435163 instance=ExtResource("1_7gvek")]

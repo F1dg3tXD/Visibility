@@ -6,11 +6,28 @@ extends Control
 @export var LooseImage: CompressedTexture2D = null
 @export var WhyEnding: CompressedTexture2D = null
 @export var DeathEnding: CompressedTexture2D = null
-# Called when the node enters the scene tree for the first time.
+
 func _ready() -> void:
-	pass # Replace with function body.
+	texture_rect.visible = false
 
+func show_ending(image: Texture2D) -> void:
+	texture_rect.texture = image
+	texture_rect.visible = true
+	modulate.a = 1.0
+	await get_tree().create_timer(10.0).timeout
+	var tween := create_tween()
+	tween.tween_property(self, "modulate:a", 0.0, 1.0)
+	await tween.finished
+	get_tree().change_scene_to_file("res://menuTemplate/scenes/credits/scrolling_credits.tscn")
 
-# Called every frame. 'delta' is the elapsed time since the previous frame.
-func _process(delta: float) -> void:
-	pass
+func show_win() -> void:
+	show_ending(WinImage)
+
+func show_loose() -> void:
+	show_ending(LooseImage)
+
+func show_why() -> void:
+	show_ending(WhyEnding)
+
+func show_death() -> void:
+	show_ending(DeathEnding)
