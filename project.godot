@@ -44,7 +44,7 @@ window/stretch/aspect="expand"
 
 [editor_plugins]
 
-enabled=PackedStringArray("res://addons/PointMaker/plugin.cfg", "res://addons/maaacks_menus_template/plugin.cfg", "res://addons/maaacks_music_controller/plugin.cfg", "res://addons/maaacks_scene_loader/plugin.cfg", "res://addons/maaacks_ui_sound_controller/plugin.cfg", "res://addons/plugin_updater/plugin.cfg")
+enabled=PackedStringArray("res://addons/maaacks_menus_template/plugin.cfg", "res://addons/maaacks_music_controller/plugin.cfg", "res://addons/maaacks_scene_loader/plugin.cfg", "res://addons/maaacks_ui_sound_controller/plugin.cfg", "res://addons/plugin_updater/plugin.cfg")
 
 [global_group]
 
@@ -135,6 +135,7 @@ locale/translations=PackedStringArray("res://addons/maaacks_menus_template/base/
 
 3d_physics/layer_1="World"
 3d_physics/layer_2="Interact"
+3d_physics/layer_3="Player"
 
 [maaacks_menus_template]
 

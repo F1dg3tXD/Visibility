@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://b6w53sqaldhlf"]
 
-[ext_resource type="Script" path="res://menuTemplate/scenes/credits/scrolling_credits.gd" id="1_d5lv5"]
-[ext_resource type="PackedScene" path="res://menuTemplate/scenes/credits/credits_label.tscn" id="2_sbjh6"]
+[ext_resource type="Script" uid="uid://c3mvhayprxgub" path="res://menuTemplate/scenes/credits/scrolling_credits.gd" id="1_d5lv5"]
+[ext_resource type="PackedScene" uid="uid://cbyre8mpyp3yl" path="res://menuTemplate/scenes/credits/credits_label.tscn" id="2_sbjh6"]
 
 [node name="ScrollingCredits" type="Control" unique_id=1162279489]
 layout_mode = 3
@@ -17,6 +17,7 @@ unique_name_in_owner = true
 layout_mode = 0
 anchor_right = 1.0
 anchor_bottom = 1.0
+scroll_vertical = 343
 horizontal_scroll_mode = 0
 vertical_scroll_mode = 3
 
@@ -26,15 +27,101 @@ size_flags_horizontal = 3
 
 [node name="HeaderSpace" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=1552560353]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 720)
+custom_minimum_size = Vector2(0, 648)
 layout_mode = 2
 
 [node name="CreditsLabel" parent="ScrollContainer/VBoxContainer" unique_id=1486745388 instance=ExtResource("2_sbjh6")]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(1280, 0)
+custom_minimum_size = Vector2(1152, 0)
 layout_mode = 2
+text = "[font_size=48]Collaborators[/font_size]
+
+[font_size=32]Hayden Koren[/font_size]
+Asset Creation
+Textures
+Concepting/Planning
+
+[font_size=32]Maya Ludkiewicz[/font_size]
+2D Asset Creation 
+UI 
+UV Mapping
+
+[font_size=32][url=https://f1dg3t.itch.io/]Tajrian Rahman[/url]  [/font_size]
+Programming
+Engine Tools
+
+[font_size=48]Sourced Assets[/font_size]
+
+[font_size=32]Falshlight[/font_size]
+Author: [url=https://sketchfab.com/Wenedi]Wenedi[/url]  
+Source: [url=https://skfb.ly/6wZpx]Sketchfab[/url]  
+License: [url=http://creativecommons.org/licenses/by/4.0/]CC Attribution[/url]
+
+[font_size=32]Footstep Sounds[/font_size]
+Author: [url=https://pixabay.com/users/u_xg7ssi08yr-48039129/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=362053]LoLa Joy[/url]  
+Source: [url=https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=362053]Pixabay[/url]
+License: [url=https://pixabay.com/service/license-summary/]Pixbay Licence[/url]
+
+[font_size=32]Door Sound[/font_size]
+Author: [url=https://pixabay.com/users/dragon-studio-38165424/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=382707]DRAGON-STUDIO[/url]  
+Source: [url=https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=382707]Pixabay[/url]
+License: [url=https://pixabay.com/service/license-summary/]Pixbay Licence[/url]
+
+[font_size=32]Door Locked Sound[/font_size]
+Author: [url=https://pixabay.com/users/dragon-studio-38165424/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=382707]DRAGON-STUDIO[/url]  
+Source: [url=https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=454241%22%3EPixabay]Pixabay[/url]
+License: [url=https://pixabay.com/service/license-summary/]Pixbay Licence[/url]
+
+[font_size=32]Win Sound[/font_size]
+Author: [url=https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=30759%22%3Efreesound_community]freesound_comunity[/url]  
+Source: [url=https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=30759%22%3EPixabay]Pixabay[/url]
+License: [url=https://pixabay.com/service/license-summary/]Pixbay Licence[/url]
+
+[font_size=32]Loose Sound[/font_size]
+Author: [url=https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=30759%22%3Efreesound_community]freesound_comunity[/url]  
+Source: [url=https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=68767%22%3EPixabay]Pixabay[/url]
+License: [url=https://pixabay.com/service/license-summary/]Pixbay Licence[/url]
+
+[font_size=32]Light Hum Sound[/font_size]
+Author: [url=https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=30759%22%3Efreesound_community]freesound_comunity[/url]  
+Source: [url=https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=7058%22%3EPixabay]Pixabay[/url]
+License: [url=https://pixabay.com/service/license-summary/]Pixbay Licence[/url]
+
+[font_size=32]Ambient Air Sound[/font_size]
+Author: [url=https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=30759%22%3Efreesound_community]freesound_comunity[/url]  
+Source: [url=https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=32396%22%3EPixabay]Pixabay[/url]
+License: [url=https://pixabay.com/service/license-summary/]Pixbay Licence[/url]
+
+[font_size=24]Godot Engine Logo[/font_size]
+Author: Andrea Calabró
+Source: [url=https://godotengine.org/press/]godotengine.org : press[/url]  
+License: [url=https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt]CC BY 4.0 International[/url] 
+
+[font_size=48]Tools[/font_size]
+[font_size=24]Godot[/font_size]
+[img=80]res:///menuTemplate/assets/godot_engine_logo/logo_vertical_color_dark.png[/img]  
+Author: [url=https://godotengine.org/contact]Juan Linietsky, Ariel Manzur, and contributors[/url]  
+Source: [url=https://godotengine.org/]godotengine.org[/url]  
+License: [url=https://github.com/godotengine/godot/blob/master/LICENSE.txt]MIT License[/url] 
+
+[font_size=24]Godot Menus Template[/font_size]
+[img=80]res:///menuTemplate/assets/plugin_logo/logo.png[/img]  
+Author: [url=https://github.com/Maaack/Godot-Menus-Template/graphs/contributors]Marek Belski and contributors[/url]  
+Source: [url=https://github.com/Maaack/Godot-Menus-Template]github: Godot-Menus-Template[/url]  
+License: [url=LICENSE.txt]MIT License[/url]  
+
+[font_size=24]Git[/font_size]
+[img=80]res:///menuTemplate/assets/git_logo/Git-Logo-2Color.png[/img]  
+Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
+Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
+License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
+
+[font_size=64]Special Thanks[/font_size]
+[font_size=48]Programing Debugger[/font_size]
+5eater5 (Actually big help)
+"
 
 [node name="FooterSpace" type="Control" parent="ScrollContainer/VBoxContainer" unique_id=1703782196]
 unique_name_in_owner = true
-custom_minimum_size = Vector2(0, 720)
+custom_minimum_size = Vector2(0, 648)
 layout_mode = 2

@@ -91,7 +91,7 @@ func register_input_event(event: InputEvent) -> void:
 
 	if _is_hovered:
 		_update_input_icon()
-		print("Hover")
+		#print("Hover")
 	#print("no Hover")
 
 func _input(event: InputEvent) -> void:

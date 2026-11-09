@@ -1,10 +1,19 @@
 # Attribution
 ## Collaborators
 
-### Role
-Person 1  
-Person 2  
-[Tajrian Rahman](https://f1dg3t.itch.io/)  
+### Hayden Koren
+Asset Creation
+Textures
+Concepting/Planning
+
+### Maya Ludkiewicz
+2D Asset Creation 
+UI 
+UV Mapping
+
+### [Tajrian Rahman](https://f1dg3t.itch.io/)  
+Programming
+Engine Tools
 
 ## Sourced Assets
 
@@ -71,3 +80,7 @@ License: [MIT License](LICENSE.txt)
 Author: [Linus Torvalds](https://github.com/torvalds)  
 Source: [git-scm.com](https://git-scm.com/downloads)  
 License: [GNU General Public License version 2](https://opensource.org/licenses/GPL-2.0)
+
+# Special Thanks
+## Programing Debugger
+5eater5 (Actually big help)

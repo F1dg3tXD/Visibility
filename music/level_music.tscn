@@ -5,13 +5,14 @@
 
 [sub_resource type="AudioStreamInteractive" id="AudioStreamInteractive_5d25b"]
 clip_count = 2
-clip_0/name = &"No Time For Bathroom Breaks_Loop"
+clip_0/name = &"intro"
 clip_0/stream = ExtResource("1_35bwy")
-clip_0/auto_advance = 0
-clip_1/name = &"No Time For Bathroom Breaks"
+clip_0/auto_advance = 1
+clip_0/next_clip = 1
+clip_1/name = &"loop"
 clip_1/stream = ExtResource("2_ll2j5")
 clip_1/auto_advance = 1
-clip_1/next_clip = 0
+clip_1/next_clip = 1
 
 [node name="LevelMusic" type="AudioStreamPlayer" unique_id=907132422]
 stream = SubResource("AudioStreamInteractive_5d25b")

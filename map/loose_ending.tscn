@@ -1,0 +1,17 @@
+[gd_scene format=3 uid="uid://dob1yykrlvl5w"]
+
+[ext_resource type="Script" uid="uid://u4tjn3pyo7n4" path="res://map/loose_ending.gd" id="1_kp52u"]
+[ext_resource type="PackedScene" uid="uid://728jju08h4dn" path="res://entities/ending_trigger.tscn" id="2_dqqkc"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5d25b"]
+size = Vector3(76.77435, 10, 101.74545)
+
+[node name="LooseEnding" type="Node3D" unique_id=277559234]
+script = ExtResource("1_kp52u")
+
+[node name="EndingTrigger" parent="." unique_id=1647937448 instance=ExtResource("2_dqqkc")]
+ending_type = 1
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EndingTrigger" unique_id=315719299]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 30.020477, 0, 40.592148)
+shape = SubResource("BoxShape3D_5d25b")

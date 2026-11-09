@@ -11,9 +11,12 @@ extends CharacterBody3D
 @onready var shit_meter: Control = $shitMeter
 @onready var ending_screen: Control = $EndingScreen
 @onready var footsteps: AudioStreamPlayer3D = $footsteps
+@onready var crt: ColorRect = $CRT/ColorRect
+const CRT_OVERLAY = preload("res://shaders/CRTOverlay.tres")
 
 
-@export_flags_3d_physics var interaction_collision_layers: int = 3
+
+@export_flags_3d_physics var interaction_collision_layers: int = 2
 var _current_interactable: Node = null
 
 var _flashing_no_check: bool = false
@@ -70,7 +73,7 @@ func _ready() -> void:
 	crosshair.visible = false
 	no_check.visible = false
 	pickup.collide_with_areas = true
-	pickup.collision_mask = pickup.collision_mask | interaction_collision_layers
+	pickup.collision_mask = 5 | interaction_collision_layers
 	if shit_meter:
 		shit_meter.warning_reached.connect(_on_shit_meter_warning)
 		shit_meter.time_ended.connect(_on_shit_meter_ended)
@@ -83,6 +86,11 @@ func _on_shit_meter_warning(_percent: float) -> void:
 func _on_shit_meter_ended() -> void:
 	_flashing_no_check = false
 	no_check.visible = false
+
+func lock_input() -> void:
+	set_process_input(false)
+	if pickup:
+		pickup.enabled = false
 
 func show_ending(ending_type: int) -> void:
 	if ending_screen == null:
@@ -165,26 +173,19 @@ func _process(delta: float) -> void:
 	else:
 		_footstep_timer = 0.0
 
-	# CRT overlay param update (find ColorRect material)
-	var crt_mat: ShaderMaterial = null
-	for n in get_tree().get_nodes_in_group("crt_overlay"):
-		if n is ColorRect and n.material is ShaderMaterial:
-			crt_mat = n.material
-			break
-	if crt_mat and shit_meter:
-		var ratio := clampf(shit_meter._elapsed / shit_meter.TimeLimit, 0.0, 1.0) if shit_meter.has("_elapsed") else 0.0
-		# curve ramps after 50%
-		var curve_val := 0.0
-		if ratio > 0.5:
-			curve_val = (ratio - 0.5) * 1.0
-		crt_mat.set_shader_parameter("curve", curve_val)
-		# resolution worsens after WarningTime
-		var res := Vector2(1920, 1080)
-		if ratio >= shit_meter.WarningTime:
-			var t: float = (ratio - shit_meter.WarningTime) / (1.0 - shit_meter.WarningTime)
-			var size := lerpf(1080.0, 240.0, t)
-			res = Vector2(size, size)
-		crt_mat.set_shader_parameter("resolution_override", res)
+	# CRT overlay param update using crt ColorRect.
+	if crt and crt.material is ShaderMaterial:
+		var crt_mat := crt.material as ShaderMaterial
+		if shit_meter and shit_meter.get("_elapsed") != null:
+			var ratio := clampf(shit_meter._elapsed / shit_meter.TimeLimit, 0.0, 1.0)
+			var curve_val := 0.0
+			var mask_val := 1.0
+			if ratio > 0.5:
+				var t := (ratio - 0.5) / 0.5
+				curve_val = lerpf(0.0, 0.5, t)
+				mask_val = lerpf(1.0, 0.5, t)
+			crt_mat.set_shader_parameter("curve", curve_val)
+			crt_mat.set_shader_parameter("mask_brightness", mask_val)
 	var bob_amount := clampf(speed2d / 5.0, 0.0, 1.0)
 	var capsule := collision_shape_3d.shape as CapsuleShape3D
 	var base_head_y := target_height * 0.5 + capsule.radius
@@ -292,7 +293,7 @@ func stop_crouch() -> void:
 	
 # Update which interaction volume the player is currently targeting.
 func _update_interactable_target() -> void:
-	print("pickup")
+	#print("pickup")
 	if not is_instance_valid(pickup):
 		return
 	pickup.force_raycast_update()
@@ -308,7 +309,7 @@ func _update_interactable_target() -> void:
 			#print("_current_interactable")
 			return
 		if is_instance_valid(_current_interactable):
-			#print("_current_interactable")
+			#print("_current_interactable2")
 			return
 
 	# Hide the previous interaction prompt.
@@ -329,3 +330,7 @@ func _exit_tree() -> void:
 		if _current_interactable.has_method("set_hovered"):
 			_current_interactable.call("set_hovered", false)
 			print(_current_interactable)
+
+
+func _on_shit_meter_warning_reached(percent: float) -> void:
+	pass # Replace with function body.

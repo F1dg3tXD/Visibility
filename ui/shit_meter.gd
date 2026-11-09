@@ -39,6 +39,10 @@ func start() -> void:
 func stop() -> void:
 	_running = false
 
+func stop_and_hide() -> void:
+	stop()
+	visible = false
+
 func _process(delta: float) -> void:
 	if not _running:
 		return

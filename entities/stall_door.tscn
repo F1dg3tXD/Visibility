@@ -7,59 +7,67 @@
 [sub_resource type="ConcavePolygonShape3D" id="ConcavePolygonShape3D_f642y"]
 data = PackedVector3Array(-0.0025, 0.39999998, 1.0174999, -0.0042999997, 0.4007, -0.0175, -0.0042999997, 0.4007, 1.0174999, -0.0042999997, 0.4007, 1.0174999, -0.0025, 0.4007, 1.0193, -0.0025, 0.39999998, 1.0174999, -0.0042999997, 0.4007, 1.0174999, -0.0039, 0.40109998, 1.0188999, -0.0025, 0.4007, 1.0193, -0.0025, 0.4007, 1.0193, 0.0025, 0.39999998, 1.0174999, -0.0025, 0.39999998, 1.0174999, -0.0025, 0.4007, 1.0193, 0.0025, 0.4007, 1.0193, 0.0025, 0.39999998, 1.0174999, 0.0025, 0.4007, 1.0193, 0.0042999997, 0.4007, 1.0174999, 0.0025, 0.39999998, 1.0174999, 0.0025, 0.4007, 1.0193, 0.0039, 0.40109998, 1.0188999, 0.0042999997, 0.4007, 1.0174999, -0.0025, 0.39999998, -0.0175, -0.0025, 0.39999998, 1.0174999, 0.0025, 0.39999998, 1.0174999, -0.0025, 0.39999998, 1.0174999, -0.0025, 0.39999998, -0.0175, -0.0042999997, 0.4007, -0.0175, 0.0042999997, 0.4007, 1.0174999, 0.0025, 0.39999998, -0.0175, 0.0025, 0.39999998, 1.0174999, -0.0025, 0.39999998, -0.0175, 0.0025, 0.39999998, 1.0174999, 0.0025, 0.39999998, -0.0175, 0.0042999997, 0.4007, 1.0174999, 0.0042999997, 0.4007, -0.0175, 0.0025, 0.39999998, -0.0175, -0.0025, 0.4007, -0.019299999, -0.0042999997, 0.4007, -0.0175, -0.0025, 0.39999998, -0.0175, -0.0025, 0.4007, -0.019299999, -0.0039, 0.40109998, -0.0189, -0.0042999997, 0.4007, -0.0175, -0.0025, 0.39999998, -0.0175, 0.0025, 0.4007, -0.019299999, -0.0025, 0.4007, -0.019299999, -0.0025, 0.39999998, -0.0175, 0.0025, 0.39999998, -0.0175, 0.0025, 0.4007, -0.019299999, 0.0042999997, 0.4007, -0.0175, 0.0025, 0.4007, -0.019299999, 0.0025, 0.39999998, -0.0175, 0.0042999997, 0.4007, -0.0175, 0.0039, 0.40109998, -0.0189, 0.0025, 0.4007, -0.019299999, -0.0042999997, 0.4007, 1.0174999, -0.005, 0.4025, -0.0175, -0.005, 0.4025, 1.0174999, -0.0042999997, 0.4025, 1.0193, -0.0042999997, 0.4007, 1.0174999, -0.005, 0.4025, 1.0174999, -0.0042999997, 0.4025, 1.0193, -0.0039, 0.40109998, 1.0188999, -0.0042999997, 0.4007, 1.0174999, -0.005, 0.4025, 1.0174999, -0.0042999997, 2.2975, 1.0193, -0.0042999997, 0.4025, 1.0193, -0.0042999997, 0.4007, 1.0174999, -0.0042999997, 0.4007, -0.0175, -0.005, 0.4025, -0.0175, -0.0042999997, 0.4007, -0.0175, -0.0042999997, 0.4025, -0.019299999, -0.005, 0.4025, -0.0175, -0.0042999997, 0.4007, -0.0175, -0.0039, 0.40109998, -0.0189, -0.0042999997, 0.4025, -0.019299999, -0.005, 0.4025, -0.0175, -0.005, 2.2975, 1.0174999, -0.005, 0.4025, 1.0174999, -0.005, 0.4025, 1.0174999, -0.005, 2.2975, 1.0174999, -0.0042999997, 2.2975, 1.0193, -0.005, 2.2975, -0.0175, -0.005, 0.4025, -0.0175, -0.0042999997, 0.4025, -0.019299999, -0.005, 0.4025, -0.0175, -0.005, 2.2975, -0.0175, -0.005, 2.2975, 1.0174999, -0.005, 2.2975, -0.0175, -0.0042999997, 0.4025, -0.019299999, -0.0042999997, 2.2975, -0.019299999, -0.0042999997, 2.2975, -0.019299999, -0.0042999997, 2.2993, -0.0175, -0.005, 2.2975, -0.0175, -0.005, 2.2975, 1.0174999, -0.005, 2.2975, -0.0175, -0.0042999997, 2.2993, -0.0175, -0.0042999997, 2.2975, -0.019299999, -0.0039, 2.2989, -0.0189, -0.0042999997, 2.2993, -0.0175, -0.005, 2.2975, 1.0174999, -0.0042999997, 2.2993, -0.0175, -0.0042999997, 2.2993, 1.0174999, -0.0042999997, 2.2993, 1.0174999, -0.0042999997, 2.2975, 1.0193, -0.005, 2.2975, 1.0174999, -0.0042999997, 2.2993, 1.0174999, -0.0039, 2.2989, 1.0188999, -0.0042999997, 2.2975, 1.0193, -0.0025, 0.4025, 1.02, 0.0025, 0.4007, 1.0193, -0.0025, 0.4007, 1.0193, -0.0025, 0.4007, 1.0193, -0.0039, 0.40109998, 1.0188999, -0.0042999997, 0.4025, 1.0193, -0.0025, 0.4007, 1.0193, -0.0042999997, 0.4025, 1.0193, -0.0025, 0.4025, 1.02, -0.0042999997, 0.4025, 1.0193, -0.0025, 2.2975, 1.02, -0.0025, 0.4025, 1.02, -0.0042999997, 0.4025, 1.0193, -0.0042999997, 2.2975, 1.0193, -0.0025, 2.2975, 1.02, -0.0042999997, 2.2975, 1.0193, -0.0025, 2.2993, 1.0193, -0.0025, 2.2975, 1.02, -0.0042999997, 2.2975, 1.0193, -0.0039, 2.2989, 1.0188999, -0.0025, 2.2993, 1.0193, -0.0025, 2.2993, 1.0193, 0.0025, 2.2975, 1.02, -0.0025, 2.2975, 1.02, -0.0025, 0.4025, 1.02, -0.0025, 2.2975, 1.02, 0.0025, 2.2975, 1.02, -0.0025, 2.2993, 1.0193, 0.0025, 2.2993, 1.0193, 0.0025, 2.2975, 1.02, 0.0025, 2.2993, 1.0193, 0.0042999997, 2.2975, 1.0193, 0.0025, 2.2975, 1.02, 0.0025, 2.2993, 1.0193, 0.0039, 2.2989, 1.0188999, 0.0042999997, 2.2975, 1.0193, -0.0025, 0.4025, 1.02, 0.0025, 2.2975, 1.02, 0.0025, 0.4025, 1.02, 0.0025, 0.4025, 1.02, 0.0025, 2.2975, 1.02, 0.0042999997, 2.2975, 1.0193, -0.0025, 0.4025, 1.02, 0.0025, 0.4025, 1.02, 0.0025, 0.4007, 1.0193, 0.0025, 0.4025, 1.02, 0.0042999997, 2.2975, 1.0193, 0.0042999997, 0.4025, 1.0193, 0.0042999997, 0.4025, 1.0193, 0.0025, 0.4007, 1.0193, 0.0025, 0.4025, 1.02, 0.0042999997, 0.4025, 1.0193, 0.0039, 0.40109998, 1.0188999, 0.0025, 0.4007, 1.0193, 0.005, 0.4025, 1.0174999, 0.0042999997, 0.4007, -0.0175, 0.0042999997, 0.4007, 1.0174999, 0.0042999997, 0.4007, 1.0174999, 0.0039, 0.40109998, 1.0188999, 0.0042999997, 0.4025, 1.0193, 0.0042999997, 0.4007, 1.0174999, 0.0042999997, 0.4025, 1.0193, 0.005, 0.4025, 1.0174999, 0.0042999997, 0.4025, 1.0193, 0.005, 2.2975, 1.0174999, 0.005, 0.4025, 1.0174999, 0.0042999997, 0.4025, 1.0193, 0.0042999997, 2.2975, 1.0193, 0.005, 2.2975, 1.0174999, 0.0042999997, 2.2975, 1.0193, 0.0042999997, 2.2993, 1.0174999, 0.005, 2.2975, 1.0174999, 0.0042999997, 2.2975, 1.0193, 0.0039, 2.2989, 1.0188999, 0.0042999997, 2.2993, 1.0174999, 0.0042999997, 2.2993, 1.0174999, 0.005, 2.2975, -0.0175, 0.005, 2.2975, 1.0174999, 0.005, 0.4025, 1.0174999, 0.005, 2.2975, 1.0174999, 0.005, 2.2975, -0.0175, 0.0042999997, 2.2993, 1.0174999, 0.0042999997, 2.2993, -0.0175, 0.005, 2.2975, -0.0175, 0.0042999997, 2.2993, -0.0175, 0.0042999997, 2.2975, -0.019299999, 0.005, 2.2975, -0.0175, 0.0042999997, 2.2993, -0.0175, 0.0039, 2.2989, -0.0189, 0.0042999997, 2.2975, -0.019299999, 0.005, 0.4025, 1.0174999, 0.005, 2.2975, -0.0175, 0.005, 0.4025, -0.0175, 0.0042999997, 2.2975, -0.019299999, 0.005, 0.4025, -0.0175, 0.005, 2.2975, -0.0175, 0.005, 0.4025, 1.0174999, 0.005, 0.4025, -0.0175, 0.0042999997, 0.4007, -0.0175, 0.0042999997, 2.2975, -0.019299999, 0.0042999997, 0.4025, -0.019299999, 0.005, 0.4025, -0.0175, 0.0042999997, 0.4025, -0.019299999, 0.0042999997, 0.4007, -0.0175, 0.005, 0.4025, -0.0175, 0.0042999997, 0.4025, -0.019299999, 0.0039, 0.40109998, -0.0189, 0.0042999997, 0.4007, -0.0175, -0.0042999997, 2.2993, 1.0174999, -0.0025, 2.3, -0.0175, -0.0025, 2.3, 1.0174999, -0.0042999997, 2.2993, 1.0174999, -0.0042999997, 2.2993, -0.0175, -0.0025, 2.3, -0.0175, -0.0042999997, 2.2993, -0.0175, -0.0025, 2.2993, -0.019299999, -0.0025, 2.3, -0.0175, -0.0042999997, 2.2993, -0.0175, -0.0039, 2.2989, -0.0189, -0.0025, 2.2993, -0.019299999, -0.0025, 2.2993, -0.019299999, 0.0025, 2.3, -0.0175, -0.0025, 2.3, -0.0175, -0.0025, 2.3, 1.0174999, -0.0025, 2.3, -0.0175, 0.0025, 2.3, -0.0175, -0.0025, 2.2993, -0.019299999, 0.0025, 2.2993, -0.019299999, 0.0025, 2.3, -0.0175, -0.0025, 2.2993, 1.0193, -0.0042999997, 2.2993, 1.0174999, -0.0025, 2.3, 1.0174999, -0.0025, 2.2993, 1.0193, -0.0039, 2.2989, 1.0188999, -0.0042999997, 2.2993, 1.0174999, -0.0025, 2.3, 1.0174999, 0.0025, 2.2993, 1.0193, -0.0025, 2.2993, 1.0193, 0.0025, 2.2993, -0.019299999, 0.0042999997, 2.2993, -0.0175, 0.0025, 2.3, -0.0175, 0.0025, 2.2993, -0.019299999, 0.0039, 2.2989, -0.0189, 0.0042999997, 2.2993, -0.0175, -0.0025, 2.3, 1.0174999, 0.0025, 2.3, -0.0175, 0.0025, 2.3, 1.0174999, 0.0025, 2.3, 1.0174999, 0.0025, 2.3, -0.0175, 0.0042999997, 2.2993, -0.0175, -0.0025, 2.3, 1.0174999, 0.0025, 2.3, 1.0174999, 0.0025, 2.2993, 1.0193, 0.0025, 2.3, 1.0174999, 0.0042999997, 2.2993, -0.0175, 0.0042999997, 2.2993, 1.0174999, 0.0042999997, 2.2993, 1.0174999, 0.0025, 2.2993, 1.0193, 0.0025, 2.3, 1.0174999, 0.0042999997, 2.2993, 1.0174999, 0.0039, 2.2989, 1.0188999, 0.0025, 2.2993, 1.0193, -0.0042999997, 2.2975, -0.019299999, -0.0025, 0.4025, -0.02, -0.0025, 2.2975, -0.02, -0.0042999997, 2.2975, -0.019299999, -0.0042999997, 0.4025, -0.019299999, -0.0025, 0.4025, -0.02, -0.0042999997, 0.4025, -0.019299999, -0.0025, 0.4007, -0.019299999, -0.0025, 0.4025, -0.02, -0.0042999997, 0.4025, -0.019299999, -0.0039, 0.40109998, -0.0189, -0.0025, 0.4007, -0.019299999, -0.0025, 0.4007, -0.019299999, 0.0025, 0.4025, -0.02, -0.0025, 0.4025, -0.02, -0.0025, 2.2975, -0.02, -0.0025, 0.4025, -0.02, 0.0025, 0.4025, -0.02, -0.0025, 0.4007, -0.019299999, 0.0025, 0.4007, -0.019299999, 0.0025, 0.4025, -0.02, -0.0025, 2.2993, -0.019299999, -0.0042999997, 2.2975, -0.019299999, -0.0025, 2.2975, -0.02, -0.0025, 2.2993, -0.019299999, -0.0039, 2.2989, -0.0189, -0.0042999997, 2.2975, -0.019299999, -0.0025, 2.2975, -0.02, 0.0025, 2.2993, -0.019299999, -0.0025, 2.2993, -0.019299999, 0.0025, 0.4007, -0.019299999, 0.0042999997, 0.4025, -0.019299999, 0.0025, 0.4025, -0.02, 0.0025, 0.4007, -0.019299999, 0.0039, 0.40109998, -0.0189, 0.0042999997, 0.4025, -0.019299999, -0.0025, 2.2975, -0.02, 0.0025, 0.4025, -0.02, 0.0025, 2.2975, -0.02, 0.0025, 2.2975, -0.02, 0.0025, 0.4025, -0.02, 0.0042999997, 0.4025, -0.019299999, -0.0025, 2.2975, -0.02, 0.0025, 2.2975, -0.02, 0.0025, 2.2993, -0.019299999, 0.0025, 2.2975, -0.02, 0.0042999997, 0.4025, -0.019299999, 0.0042999997, 2.2975, -0.019299999, 0.0042999997, 2.2975, -0.019299999, 0.0025, 2.2993, -0.019299999, 0.0025, 2.2975, -0.02, 0.0042999997, 2.2975, -0.019299999, 0.0039, 2.2989, -0.0189, 0.0025, 2.2993, -0.019299999)
 
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f642y"]
-animation = &"open"
-play_mode = 1
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kiuyf"]
-animation = &"idle"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dibwg"]
-animation = &"locked"
-
-[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_gkt83"]
-animation = &"open"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f642y"]
-switch_mode = 2
-advance_mode = 2
-advance_condition = &"!_is_open"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dibwg"]
-advance_mode = 2
-advance_condition = &"!locked"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gkt83"]
-advance_mode = 2
-advance_condition = &"locked"
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f4doa"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ttw4d"]
-switch_mode = 2
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s8xf8"]
-advance_mode = 2
-
-[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_f642y"]
-states/close/node = SubResource("AnimationNodeAnimation_f642y")
-states/close/position = Vector2(640, 122)
-states/idle/node = SubResource("AnimationNodeAnimation_kiuyf")
-states/idle/position = Vector2(318, 100)
-states/locked/node = SubResource("AnimationNodeAnimation_dibwg")
-states/locked/position = Vector2(401, 178)
-states/open/node = SubResource("AnimationNodeAnimation_gkt83")
-states/open/position = Vector2(515, 59)
-transitions = ["open", "close", SubResource("AnimationNodeStateMachineTransition_f642y"), "idle", "open", SubResource("AnimationNodeStateMachineTransition_dibwg"), "idle", "locked", SubResource("AnimationNodeStateMachineTransition_gkt83"), "locked", "idle", SubResource("AnimationNodeStateMachineTransition_f4doa"), "close", "idle", SubResource("AnimationNodeStateMachineTransition_ttw4d"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_s8xf8")]
-
 [sub_resource type="ViewportTexture" id="ViewportTexture_f642y"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_dibwg"]
 size = Vector3(0.068359375, 0.97753906, 1.8681641)
+
+[sub_resource type="AnimationNodeOneShot" id="AnimationNodeOneShot_f642y"]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_f642y"]
+animation = &"open"
+play_mode = 1
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_dibwg"]
+animation = &"idle"
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_kiuyf"]
+animation = &"open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_dibwg"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"is_closed"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_ttw4d"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"is_open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_gkt83"]
+advance_mode = 2
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_f4doa"]
+advance_mode = 2
+advance_condition = &"is_open"
+
+[sub_resource type="AnimationNodeStateMachineTransition" id="AnimationNodeStateMachineTransition_s8xf8"]
+switch_mode = 2
+advance_mode = 2
+advance_condition = &"is_closed"
+
+[sub_resource type="AnimationNodeStateMachine" id="AnimationNodeStateMachine_s8xf8"]
+states/closed/node = SubResource("AnimationNodeAnimation_f642y")
+states/closed/position = Vector2(554, 100)
+states/idle/node = SubResource("AnimationNodeAnimation_dibwg")
+states/idle/position = Vector2(310, 100)
+states/open/node = SubResource("AnimationNodeAnimation_kiuyf")
+states/open/position = Vector2(419, 24)
+transitions = ["open", "closed", SubResource("AnimationNodeStateMachineTransition_dibwg"), "closed", "open", SubResource("AnimationNodeStateMachineTransition_ttw4d"), "Start", "idle", SubResource("AnimationNodeStateMachineTransition_gkt83"), "idle", "open", SubResource("AnimationNodeStateMachineTransition_f4doa"), "closed", "idle", SubResource("AnimationNodeStateMachineTransition_s8xf8")]
+
+[sub_resource type="AnimationNodeAnimation" id="AnimationNodeAnimation_07p4l"]
+animation = &"locked"
+
+[sub_resource type="AnimationNodeBlendTree" id="AnimationNodeBlendTree_f642y"]
+graph_offset = Vector2(-498.95032, 87.13962)
+nodes/lockedAnim/node = SubResource("AnimationNodeAnimation_07p4l")
+nodes/lockedAnim/position = Vector2(-340, 40)
+nodes/StateMachine/node = SubResource("AnimationNodeStateMachine_s8xf8")
+nodes/StateMachine/position = Vector2(-420, 240)
+nodes/Locked/node = SubResource("AnimationNodeOneShot_f642y")
+nodes/Locked/position = Vector2(-40, 100)
+node_connections = [&"output", 0, &"Locked", &"Locked", 0, &"StateMachine", &"Locked", 1, &"lockedAnim"]
 
 [node name="StallDoor" unique_id=631868935 instance=ExtResource("1_krmsm")]
 script = ExtResource("2_gsq8e")
@@ -78,26 +86,30 @@ bone_idx = 1
 transform = Transform3D(1, -8.7422784e-08, 0, 0, 0, 1, -8.7422784e-08, -1, 0, 8.7422784e-08, 0, 1)
 shape = SubResource("ConcavePolygonShape3D_f642y")
 
-[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=38587426]
-tree_root = SubResource("AnimationNodeStateMachine_f642y")
-anim_player = NodePath("../AnimationPlayer")
-parameters/conditions/!_is_open = false
-parameters/conditions/!locked = false
-parameters/conditions/locked = false
-
-[node name="interactionVolume" parent="." index="3" unique_id=2147379566 instance=ExtResource("3_f642y")]
-transform = Transform3D(1, 0, -8.7422784e-08, -8.7422784e-08, 0, -1, 0, 1, 0, -0.13610256, 1, 0)
+[node name="interactionVolume" parent="Armature/Skeleton3D/door2" index="1" unique_id=2147379566 instance=ExtResource("3_f642y")]
 collision_layer = 2
 collision_mask = 2
 
-[node name="promtGraphics" parent="interactionVolume" index="0" unique_id=1435343400]
+[node name="promtGraphics" parent="Armature/Skeleton3D/door2/interactionVolume" index="0" unique_id=1435343400]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -4.4703484e-08, 0.5857105, -0.5881417)
 texture = SubResource("ViewportTexture_f642y")
 
-[node name="CollisionShape3D" type="CollisionShape3D" parent="interactionVolume" index="2" unique_id=147447513]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.072063714, 0.49459964, -0.35414743)
+[node name="CollisionShape3D" type="CollisionShape3D" parent="Armature/Skeleton3D/door2/interactionVolume" index="2" unique_id=147447513]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0.495, -0.354)
 shape = SubResource("BoxShape3D_dibwg")
 
-[connection signal="interact_pressed" from="interactionVolume" to="." method="interact"]
+[node name="AnimationTree" type="AnimationTree" parent="." index="2" unique_id=38587426]
+tree_root = SubResource("AnimationNodeBlendTree_f642y")
+anim_player = NodePath("../AnimationPlayer")
+parameters/StateMachine/conditions/is_closed = false
+parameters/StateMachine/conditions/is_open = false
+parameters/Locked/active = false
+parameters/Locked/internal_active = false
+parameters/Locked/request = 0
 
-[editable path="interactionVolume"]
+[node name="audio" type="AudioStreamPlayer3D" parent="." index="3" unique_id=289814686]
+volume_db = -20.0
+
+[connection signal="interact_pressed" from="Armature/Skeleton3D/door2/interactionVolume" to="." method="interact"]
+
+[editable path="Armature/Skeleton3D/door2/interactionVolume"]

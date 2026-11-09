@@ -1,0 +1,16 @@
+[gd_scene format=3 uid="uid://di60a31cxomfd"]
+
+[ext_resource type="Script" uid="uid://b2suonikihm6t" path="res://map/die_ending.gd" id="1_bwnvm"]
+[ext_resource type="PackedScene" uid="uid://728jju08h4dn" path="res://entities/ending_trigger.tscn" id="2_to51w"]
+
+[sub_resource type="BoxShape3D" id="BoxShape3D_5d25b"]
+size = Vector3(10, 7, 22)
+
+[node name="dieEnding" type="Node3D" unique_id=2007267946]
+script = ExtResource("1_bwnvm")
+
+[node name="EndingTrigger" parent="." unique_id=1647937448 instance=ExtResource("2_to51w")]
+
+[node name="CollisionShape3D" type="CollisionShape3D" parent="EndingTrigger" unique_id=498309475]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 4.5, 3, 6.5)
+shape = SubResource("BoxShape3D_5d25b")

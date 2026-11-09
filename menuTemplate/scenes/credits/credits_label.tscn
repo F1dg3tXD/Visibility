@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://cbyre8mpyp3yl"]
 
-[ext_resource type="Script" path="res://addons/maaacks_menus_template/base/nodes/labels/credits_label.gd" id="1_u7ryc"]
+[ext_resource type="Script" uid="uid://cc2wtqasev7le" path="res://addons/maaacks_menus_template/base/nodes/labels/credits_label.gd" id="1_u7ryc"]
 
 [node name="CreditsLabel" type="RichTextLabel" unique_id=525943618]
 anchors_preset = 15
@@ -16,17 +16,52 @@ text = "[font_size=48]Collaborators[/font_size]
 [font_size=32]Role[/font_size]
 Person 1  
 Person 2  
-[url=]Person w/ Link[/url]  
+[url=https://f1dg3t.itch.io/]Tajrian Rahman[/url]  
 
-[font_size=48]Sourced[/font_size]
-[font_size=32]Asset Type[/font_size]
-[font_size=24]Use Case[/font_size]
-Author: [url=]Name[/url]  
-Source: [url=]Domain : webpage.html[/url]  
-License: [url=]License[/url]
+[font_size=48]Sourced Assets[/font_size]
+
+[font_size=32]Falshlight[/font_size]
+Author: [url=https://sketchfab.com/Wenedi]Wenedi[/url]  
+Source: [url=https://skfb.ly/6wZpx]Sketchfab[/url]  
+License: [url=http://creativecommons.org/licenses/by/4.0/]CC Attribution[/url]
+
+[font_size=32]Footstep Sounds[/font_size]
+Author: [url=https://pixabay.com/users/u_xg7ssi08yr-48039129/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=362053]LoLa Joy[/url]  
+Source: [url=https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=362053]Pixabay[/url]
+License: [url=https://pixabay.com/service/license-summary/]Pixbay Licence[/url]
+
+[font_size=32]Door Sound[/font_size]
+Author: [url=https://pixabay.com/users/dragon-studio-38165424/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=382707]DRAGON-STUDIO[/url]  
+Source: [url=https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=382707]Pixabay[/url]
+License: [url=https://pixabay.com/service/license-summary/]Pixbay Licence[/url]
+
+[font_size=32]Door Locked Sound[/font_size]
+Author: [url=https://pixabay.com/users/dragon-studio-38165424/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=382707]DRAGON-STUDIO[/url]  
+Source: [url=https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=454241%22%3EPixabay]Pixabay[/url]
+License: [url=https://pixabay.com/service/license-summary/]Pixbay Licence[/url]
+
+[font_size=32]Win Sound[/font_size]
+Author: [url=https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=30759%22%3Efreesound_community]freesound_comunity[/url]  
+Source: [url=https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=30759%22%3EPixabay]Pixabay[/url]
+License: [url=https://pixabay.com/service/license-summary/]Pixbay Licence[/url]
+
+[font_size=32]Loose Sound[/font_size]
+Author: [url=https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=30759%22%3Efreesound_community]freesound_comunity[/url]  
+Source: [url=https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=68767%22%3EPixabay]Pixabay[/url]
+License: [url=https://pixabay.com/service/license-summary/]Pixbay Licence[/url]
+
+[font_size=32]Light Hum Sound[/font_size]
+Author: [url=https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=30759%22%3Efreesound_community]freesound_comunity[/url]  
+Source: [url=https://pixabay.com//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=7058%22%3EPixabay]Pixabay[/url]
+License: [url=https://pixabay.com/service/license-summary/]Pixbay Licence[/url]
+
+[font_size=32]Ambient Air Sound[/font_size]
+Author: [url=https://pixabay.com/users/freesound_community-46691455/?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=30759%22%3Efreesound_community]freesound_comunity[/url]  
+Source: [url=https://pixabay.com/sound-effects//?utm_source=link-attribution&utm_medium=referral&utm_campaign=music&utm_content=32396%22%3EPixabay]Pixabay[/url]
+License: [url=https://pixabay.com/service/license-summary/]Pixbay Licence[/url]
 
 [font_size=24]Godot Engine Logo[/font_size]
-Author: Andrea Calabró  
+Author: Andrea Calabró
 Source: [url=https://godotengine.org/press/]godotengine.org : press[/url]  
 License: [url=https://github.com/godotengine/godot/blob/master/LOGO_LICENSE.txt]CC BY 4.0 International[/url] 
 
@@ -48,6 +83,10 @@ License: [url=LICENSE.txt]MIT License[/url]
 Author: [url=https://github.com/torvalds]Linus Torvalds[/url]  
 Source: [url=https://git-scm.com/downloads]git-scm.com[/url]  
 License: [url=https://opensource.org/licenses/GPL-2.0]GNU General Public License version 2[/url]
+
+[font_size=64]Special Thanks[/font_size]
+[font_size=48]Programing Debugger[/font_size]
+5eater5 (Actually big help)
 "
 fit_content = true
 scroll_active = false
