@@ -15,8 +15,9 @@
 [ext_resource type="PackedScene" uid="uid://dob1yykrlvl5w" path="res://map/loose_ending.tscn" id="12_8u4qe"]
 [ext_resource type="PackedScene" uid="uid://wpfd5gvmhqcm" path="res://models/exit.tscn" id="14_8s4ou"]
 [ext_resource type="PackedScene" uid="uid://di60a31cxomfd" path="res://map/die_ending.tscn" id="15_37e3u"]
+[ext_resource type="PackedScene" uid="uid://c1abolksapyoe" path="res://editor/env.tscn" id="16_27ivb"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_37e3u"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_yv2it"]
 resource_local_to_scene = true
 shader = ExtResource("3_uxxhb")
 shader_parameter/mask_type = 1
@@ -30,7 +31,7 @@ shader_parameter/min_scanline_thickness = 0.5
 shader_parameter/aspect = 0.75
 shader_parameter/wobble_strength = 0.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_27ivb"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_1im7h"]
 viewport_path = NodePath("SubViewport")
 
 [node name="bathroom" type="Node3D" unique_id=1137359579]
@@ -44,7 +45,7 @@ transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.
 TimeLimit = 30.0
 
 [node name="ColorRect" parent="Player_pawn/shitMeter" index="1" unique_id=364155489]
-material = SubResource("ShaderMaterial_37e3u")
+material = SubResource("ShaderMaterial_yv2it")
 
 [node name="LevelMusic" parent="." unique_id=907132422 instance=ExtResource("3_ji4j3")]
 unique_name_in_owner = true
@@ -193,7 +194,7 @@ transform = Transform3D(-4.3711385e-08, 0, 3.0203886, 0, 1, 0, -0.99999994, 0, -
 locked = true
 
 [node name="promtGraphics" parent="StallDoor/Armature/Skeleton3D/door2/interactionVolume" parent_id_path=PackedInt32Array(631868935, 2147379566) index="0" unique_id=1435343400]
-texture = SubResource("ViewportTexture_27ivb")
+texture = SubResource("ViewportTexture_1im7h")
 
 [node name="keypad" parent="." unique_id=1237354259 instance=ExtResource("10_clht8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38722834, 1.9213568, -0.59419304)
@@ -213,6 +214,8 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 9, 0, 39)
 
 [node name="EndingTrigger" parent="dieEnding" index="0" unique_id=1647937448]
 ending_type = 3
+
+[node name="env" parent="." unique_id=1864429574 instance=ExtResource("16_27ivb")]
 
 [connection signal="time_ended" from="Player_pawn/shitMeter" to="looseEnding" method="_on_shit_meter_time_ended"]
 [connection signal="warning_reached" from="Player_pawn/shitMeter" to="." method="_on_shit_meter_warning_reached"]
