@@ -6,6 +6,7 @@
 [ext_resource type="PackedScene" uid="uid://c5ydcrusiu8sp" path="res://menuTemplate/scenes/windows/main_menu_options_window.tscn" id="3_4cctv"]
 [ext_resource type="PackedScene" uid="uid://hrr4hqriuu5e" path="res://menuTemplate/scenes/windows/main_menu_credits_window.tscn" id="4_deir1"]
 [ext_resource type="PackedScene" uid="uid://dt8j10aiga62g" path="res://map/test_map.tscn" id="7_deir1"]
+[ext_resource type="Script" uid="uid://be8nlnsa2mbii" path="res://map/MainMenuMap.gd" id="7_mr7du"]
 
 [sub_resource type="Animation" id="1"]
 resource_name = "Intro"
@@ -292,7 +293,7 @@ transitions = ["Intro", "OpenMainMenu", SubResource("11"), "OpenMainMenu", "Open
 graph_offset = Vector2(-180.277, 49)
 
 [sub_resource type="ViewportTexture" id="ViewportTexture_4cctv"]
-viewport_path = NodePath("TestMap/Camera3D/SubViewport")
+viewport_path = NodePath("MainMenuMap/Camera3D/SubViewport")
 
 [node name="MainMenu" unique_id=589811630 instance=ExtResource("1_virrg")]
 offset_left = 1.0
@@ -403,6 +404,9 @@ grow_vertical = 2
 mouse_filter = 2
 metadata/_edit_lock_ = true
 
-[node name="TestMap" parent="." index="8" unique_id=1626944311 instance=ExtResource("7_deir1")]
+[node name="MainMenuMap" parent="." index="8" unique_id=1626944311 instance=ExtResource("7_deir1")]
+script = ExtResource("7_mr7du")
 
-[editable path="TestMap"]
+[connection signal="pressed" from="MenuContainer/MenuButtonsMargin/MenuButtonsContainer/MenuButtonsBoxContainer/NewGameButton" to="MainMenuMap" method="_on_new_game_button_pressed"]
+
+[editable path="MainMenuMap"]

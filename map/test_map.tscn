@@ -2,32 +2,78 @@
 
 [ext_resource type="PackedScene" uid="uid://c1abolksapyoe" path="res://editor/env.tscn" id="1_np538"]
 [ext_resource type="Texture2D" uid="uid://cqt4c7arm2cp" path="res://menuTemplate/assets/stdioShitshow_logo/studioShitshowLogo.png" id="2_r1p3x"]
+[ext_resource type="Texture2D" uid="uid://bq1xrxpf48x5q" path="res://textures/win.png" id="3_qyrbn"]
+[ext_resource type="MeshLibrary" uid="uid://calrylocis0yf" path="res://models/ModularBathroomTiles_lib.tres" id="4_67hre"]
+
+[sub_resource type="Animation" id="Animation_67hre"]
+resource_name = "Door_open"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGBox3D/CSGBox3D/CSGBox3D5/Node3D:rotation")
+tracks/0/interp = 2
+tracks/0/loop_wrap = false
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.2, 0.26666668, 0.4, 0.73333335),
+"transitions": PackedFloat32Array(1, 1, 1, 1, 1),
+"update": 0,
+"values": [Vector3(0, 0, 0), Vector3(0, 1.3089969, 0), Vector3(0, 1.0471975, 0), Vector3(0, 1.2401091, 0), Vector3(0, 1.3089969, 0)]
+}
+
+[sub_resource type="Animation" id="Animation_vv62k"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("CSGBox3D/CSGBox3D/CSGBox3D5/Node3D:rotation")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector3(0, 0, 0)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_1cmj6"]
+_data = {
+&"Door_open": SubResource("Animation_67hre"),
+&"RESET": SubResource("Animation_vv62k")
+}
 
 [node name="TestMap" type="Node3D" unique_id=1626944311]
 
 [node name="CSGBox3D" type="CSGBox3D" parent="." unique_id=827797194]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.004240513, -0.013962746, 0.012748718)
 size = Vector3(10, 0.2, 10)
 
 [node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D" unique_id=858197422]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2, 0)
-size = Vector3(0.1, 5, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2, 2.9533997, 0.3383789)
+size = Vector3(0.1, 6.9067993, 14.541992)
 
-[node name="CSGBox3D" type="CSGBox3D" parent="CSGBox3D/CSGBox3D" unique_id=266076127]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -0.9016354, -2)
+[node name="CSGBox3D5" type="CSGBox3D" parent="CSGBox3D/CSGBox3D" unique_id=266076127]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, -1.8534274, -2.338379)
 operation = 2
 size = Vector3(1, 2, 1)
 
+[node name="Node3D" type="Node3D" parent="CSGBox3D/CSGBox3D/CSGBox3D5" unique_id=459823650]
+transform = Transform3D(0.99999994, 0, 0, 0, 1, 0, 0, 0, 0.99999994, 0, 0, 0.49887156)
+
+[node name="Door" type="CSGBox3D" parent="CSGBox3D/CSGBox3D/CSGBox3D5/Node3D" unique_id=603357943]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 0, -0.49887156)
+size = Vector3(0.0546875, 2, 1)
+
 [node name="CSGBox3D2" type="CSGBox3D" parent="CSGBox3D" unique_id=1113951812]
-transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2, 0)
-size = Vector3(0.1, 5, 7)
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, -5, 2.9692993, 0)
+size = Vector3(0.1, 6.9385986, 7)
 
 [node name="CSGBox3D3" type="CSGBox3D" parent="CSGBox3D" unique_id=985474025]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.5, 2, 3.5)
-size = Vector3(0.1, 5, 7)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.5, 2.960205, 3.5)
+size = Vector3(0.1, 6.92041, 7)
 
 [node name="CSGBox3D4" type="CSGBox3D" parent="CSGBox3D" unique_id=737626923]
-transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.4999999, 2, -3.5)
-size = Vector3(0.1, 5, 7)
+transform = Transform3D(-4.371139e-08, 0, -1, 0, 1, 0, 1, 0, -4.371139e-08, -1.4999999, 2.9551392, -3.5)
+size = Vector3(0.1, 6.9102783, 7)
 
 [node name="env" parent="." unique_id=1864429574 instance=ExtResource("1_np538")]
 
@@ -45,3 +91,30 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.1205645, 1.2053742, 1.60298
 pixel_size = 0.0025
 billboard = 2
 texture = ExtResource("2_r1p3x")
+
+[node name="AreaLight3D" type="AreaLight3D" parent="." unique_id=1114510640]
+transform = Transform3D(1, 0, 0, 0, -4.371139e-08, 1, 0, -1, -4.371139e-08, 4, 6.849508, 0)
+layers = 8
+light_bake_mode = 1
+shadow_enabled = true
+distance_fade_enabled = true
+area_range = 19.857
+area_attenuation = 0.068
+area_texture = ExtResource("3_qyrbn")
+
+[node name="GridMap" type="GridMap" parent="." unique_id=1066383324]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 1.101, 0.67)
+mesh_library = ExtResource("4_67hre")
+data = {
+"cells": PackedInt32Array(-65536, 65535, 1179648, -65536, 65534, 983044, -1, 65534, 983044, -2, 65534, 983042, -3, 65534, 1179648, -3, 65535, 720900, -2, 65535, 720900, -1, 65535, 1179648, -1, 0, 458756, -2, 0, 720898, -3, 0, 1179648, -65536, 0, 458756)
+}
+metadata/_editor_floor_ = Vector3(0, -1, 0)
+
+[node name="OmniLight3D" type="OmniLight3D" parent="." unique_id=69563764]
+transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0, 4.796078, -0.51476824)
+shadow_enabled = true
+omni_range = 485.029
+omni_attenuation = 0.5
+
+[node name="AnimationPlayer" type="AnimationPlayer" parent="." unique_id=566862766]
+libraries/ = SubResource("AnimationLibrary_1cmj6")
