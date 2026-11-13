@@ -70,10 +70,10 @@ func _ready() -> void:
 	add_to_group("player")
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	crosshair.visible = false
+	crosshair.visible = true
 	no_check.visible = false
 	pickup.collide_with_areas = true
-	pickup.collision_mask = 5 | interaction_collision_layers
+	pickup.collision_mask = 5 | interaction_collision_layers | 8
 	if shit_meter:
 		shit_meter.warning_reached.connect(_on_shit_meter_warning)
 		shit_meter.time_ended.connect(_on_shit_meter_ended)
@@ -211,7 +211,7 @@ func _process(delta: float) -> void:
 	
 	# If holding something, keep moving it to the hold position
 	if held_object:
-		var target_pos = pickup.global_transform.origin + pickup.global_transform.basis.z * -hold_distance
+		var target_pos = pickup.global_transform.origin + pickup.global_transform.basis.z * +hold_distance
 		var dir = target_pos - held_object.global_transform.origin
 		held_object.linear_velocity = dir * hold_strength
 		crosshair.visible = true
@@ -324,6 +324,25 @@ func _update_interactable_target() -> void:
 		if _current_interactable.has_method("set_hovered"):
 			_current_interactable.call("set_hovered", true)
 			print(_current_interactable)
+			
+# Pickup shit feedback
+func _update_pickup_crosshair() -> void:
+	# Keep crosshair visible while holding an object.
+	if is_instance_valid(held_object):
+		crosshair.visible = true
+		return
+	# Refresh raycast.
+	pickup.force_raycast_update()
+	# Check whether we're looking at something.
+	if pickup.is_colliding():
+		var collider = pickup.get_collider()
+		# Only show crosshair for pickup-able physics objects.
+		if collider is RigidBody3D:
+			crosshair.visible = true
+			return
+	# Nothing pickup-able targeted.
+	crosshair.visible = false
+
 
 func _exit_tree() -> void:
 	if is_instance_valid(_current_interactable):

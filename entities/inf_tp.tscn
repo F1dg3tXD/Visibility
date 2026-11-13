@@ -1,0 +1,8 @@
+[gd_scene format=3 uid="uid://wmuo5c30skfe"]
+
+[ext_resource type="Script" uid="uid://dxeca8c6hebh4" path="res://entities/inf_tp.gd" id="1_jk5ob"]
+[ext_resource type="PackedScene" uid="uid://doifurycxnima" path="res://entities/toiletpaper.tscn" id="2_rwvjt"]
+
+[node name="infTP" type="Marker3D" unique_id=46534632]
+script = ExtResource("1_jk5ob")
+toiletPaper = ExtResource("2_rwvjt")

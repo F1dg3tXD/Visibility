@@ -1,0 +1,19 @@
+[gd_scene format=3 uid="uid://cc68k0qfma70s"]
+
+[ext_resource type="Shader" uid="uid://j7bq8p3n5v" path="res://shaders/UVLight_reveal.gdshader" id="1_ecydc"]
+[ext_resource type="Texture2D" uid="uid://h8gbuxhbnodx" path="res://textures/0.png" id="2_tds3j"]
+
+[sub_resource type="QuadMesh" id="QuadMesh_5d25b"]
+size = Vector2(0.2, 0.2)
+
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_ls3bv"]
+render_priority = 0
+shader = ExtResource("1_ecydc")
+shader_parameter/reveal_texture = ExtResource("2_tds3j")
+shader_parameter/modulate_color = Color(1, 1, 1, 1)
+
+[node name="Number" type="Node3D" unique_id=973730458]
+
+[node name="MeshInstance3D" type="MeshInstance3D" parent="." unique_id=654320521]
+mesh = SubResource("QuadMesh_5d25b")
+surface_material_override/0 = SubResource("ShaderMaterial_ls3bv")
