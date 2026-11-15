@@ -18,8 +18,9 @@
 [ext_resource type="PackedScene" uid="uid://728jju08h4dn" path="res://entities/ending_trigger.tscn" id="16_yv2it"]
 [ext_resource type="PackedScene" uid="uid://wmuo5c30skfe" path="res://entities/inf_tp.tscn" id="17_yv2it"]
 [ext_resource type="PackedScene" uid="uid://doifurycxnima" path="res://entities/toiletpaper.tscn" id="18_1im7h"]
+[ext_resource type="PackedScene" uid="uid://c1abolksapyoe" path="res://editor/env.tscn" id="19_871ff"]
 
-[sub_resource type="ShaderMaterial" id="ShaderMaterial_1im7h"]
+[sub_resource type="ShaderMaterial" id="ShaderMaterial_5nitb"]
 resource_local_to_scene = true
 shader = ExtResource("3_uxxhb")
 shader_parameter/mask_type = 1
@@ -33,7 +34,7 @@ shader_parameter/min_scanline_thickness = 0.5
 shader_parameter/aspect = 0.75
 shader_parameter/wobble_strength = 0.0
 
-[sub_resource type="ViewportTexture" id="ViewportTexture_871ff"]
+[sub_resource type="ViewportTexture" id="ViewportTexture_gdewk"]
 viewport_path = NodePath("SubViewport")
 
 [sub_resource type="BoxShape3D" id="BoxShape3D_1im7h"]
@@ -50,7 +51,7 @@ transform = Transform3D(-0.70710677, 0, -0.70710677, 0, 1, 0, 0.70710677, 0, -0.
 TimeLimit = 30.0
 
 [node name="ColorRect" parent="Player_pawn/shitMeter" index="1" unique_id=364155489]
-material = SubResource("ShaderMaterial_1im7h")
+material = SubResource("ShaderMaterial_5nitb")
 
 [node name="LevelMusic" parent="." unique_id=907132422 instance=ExtResource("3_ji4j3")]
 unique_name_in_owner = true
@@ -184,7 +185,7 @@ transform = Transform3D(-4.3711385e-08, 0, 3.0203886, 0, 1, 0, -0.99999994, 0, -
 locked = true
 
 [node name="promtGraphics" parent="StallDoor/Armature/Skeleton3D/door2/interactionVolume" parent_id_path=PackedInt32Array(631868935, 2147379566) index="0" unique_id=1435343400]
-texture = SubResource("ViewportTexture_871ff")
+texture = SubResource("ViewportTexture_gdewk")
 
 [node name="keypad" parent="." unique_id=1237354259 instance=ExtResource("10_clht8")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 0.38722834, 1.9213568, -0.59419304)
@@ -231,10 +232,13 @@ transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 1.7621474, 1.6005518, 20.6217
 [node name="toiletpaper3" parent="." unique_id=548832661 instance=ExtResource("18_1im7h")]
 transform = Transform3D(1, 0, 0, 0, 1, 0, 0, 0, 1, 2.3332782, 1.6005518, 21.793343)
 
+[node name="env" parent="." unique_id=1864429574 instance=ExtResource("19_871ff")]
+
 [connection signal="time_ended" from="Player_pawn/shitMeter" to="looseEnding" method="_on_shit_meter_time_ended"]
 [connection signal="warning_reached" from="Player_pawn/shitMeter" to="." method="_on_shit_meter_warning_reached"]
 
 [editable path="Player_pawn"]
+[editable path="Player_pawn/Head/Hand/flashlight"]
 [editable path="Player_pawn/shitMeter"]
 [editable path="Player_pawn/EndingScreen"]
 [editable path="whyEnding"]
