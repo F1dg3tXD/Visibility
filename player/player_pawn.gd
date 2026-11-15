@@ -14,7 +14,23 @@ extends CharacterBody3D
 @onready var crt: ColorRect = $CRT/ColorRect
 const CRT_OVERLAY = preload("res://shaders/CRTOverlay.tres")
 
+var _holding_object: bool = false
+var _ignored_dropped_object: WeakRef = null
 
+# Crosshair states.
+enum CrosshairState {
+	DEFAULT,
+	TARGETING,
+	HOLDING,
+	LOST_FLASH
+}
+
+var _crosshair_state: int = CrosshairState.DEFAULT
+var _crosshair_default_scale: Vector2 = Vector2.ONE
+var _crosshair_tween: Tween = null
+
+@export var crosshair_spin_speed: float = 360.0 # Degrees per second
+@export var crosshair_animation_speed: float = 0.15
 
 @export_flags_3d_physics var interaction_collision_layers: int = 2
 var _current_interactable: Node = null
@@ -70,13 +86,19 @@ func _ready() -> void:
 	add_to_group("player")
 	get_tree().paused = false
 	Input.set_mouse_mode(Input.MOUSE_MODE_CAPTURED)
-	crosshair.visible = true
 	no_check.visible = false
 	pickup.collide_with_areas = true
 	pickup.collision_mask = 5 | interaction_collision_layers | 8
 	if shit_meter:
 		shit_meter.warning_reached.connect(_on_shit_meter_warning)
 		shit_meter.time_ended.connect(_on_shit_meter_ended)
+	# Crosshair setup
+	crosshair.visible = true
+	crosshair.modulate = Color.WHITE
+	_crosshair_default_scale = crosshair.scale
+	# Ensure rotation and scaling happen around the center.
+	crosshair.resized.connect(_update_crosshair_pivot)
+	call_deferred("_update_crosshair_pivot")
 
 func _on_shit_meter_warning(_percent: float) -> void:
 	no_check.visible = true
@@ -135,7 +157,6 @@ func _input(event: InputEvent) -> void:
 		# Preserve existing object pickup/release behavior.
 		if is_instance_valid(held_object):
 			held_object = null
-			crosshair.visible = false
 		else:
 			held_object = null
 			if pickup.is_colliding():
@@ -144,10 +165,28 @@ func _input(event: InputEvent) -> void:
 					held_object = collider
 					crosshair.visible = true
 		get_viewport().set_input_as_handled()
+		
+		# Pickup / drop.
+		if _holding_object:
+			_drop_held_object()
+		else:
+			pickup.force_raycast_update()
+
+			if pickup.is_colliding():
+				var collider = pickup.get_collider()
+
+				if _is_pickup_target(collider):
+					held_object = collider as RigidBody3D
+					_holding_object = true
+					_ignored_dropped_object = null
+					_set_crosshair_state(CrosshairState.HOLDING)
+
+		get_viewport().set_input_as_handled()
 
 
 func _process(delta: float) -> void:
 	_update_interactable_target()
+	_update_pickup_crosshair(delta)
 	# Toggle light
 	if Input.is_action_just_pressed("toggle_light"):
 		_light_on = not _light_on
@@ -210,11 +249,11 @@ func _process(delta: float) -> void:
 		head.rotation.x = pitch
 	
 	# If holding something, keep moving it to the hold position
-	if held_object:
-		var target_pos = pickup.global_transform.origin + pickup.global_transform.basis.z * +hold_distance
-		var dir = target_pos - held_object.global_transform.origin
-		held_object.linear_velocity = dir * hold_strength
-		crosshair.visible = true
+	if _holding_object and is_instance_valid(held_object):
+		if not held_object.is_queued_for_deletion():
+			var target_pos = pickup.global_position + pickup.global_transform.basis.z * hold_distance
+			var dir = target_pos - held_object.global_position
+			held_object.linear_velocity = dir * hold_strength
 		#gun_animation_player.play("Grab")
 		
 	
@@ -326,22 +365,38 @@ func _update_interactable_target() -> void:
 			print(_current_interactable)
 			
 # Pickup shit feedback
-func _update_pickup_crosshair() -> void:
-	# Keep crosshair visible while holding an object.
-	if is_instance_valid(held_object):
-		crosshair.visible = true
+func _update_pickup_crosshair(delta: float) -> void:
+	# Don't interrupt the red lost-object animation.
+	if _crosshair_state == CrosshairState.LOST_FLASH:
 		return
-	# Refresh raycast.
+	# Check the currently held object.
+	if _holding_object:
+		if is_instance_valid(held_object) and not held_object.is_queued_for_deletion():
+			_set_crosshair_state(CrosshairState.HOLDING)
+			return
+		# The held object was unexpectedly deleted.
+		held_object = null
+		_holding_object = false
+		_play_lost_object_flash()
+		return
+	# Refresh the raycast.
 	pickup.force_raycast_update()
-	# Check whether we're looking at something.
+	var can_pick_up: bool = false
 	if pickup.is_colliding():
 		var collider = pickup.get_collider()
-		# Only show crosshair for pickup-able physics objects.
-		if collider is RigidBody3D:
-			crosshair.visible = true
-			return
-	# Nothing pickup-able targeted.
-	crosshair.visible = false
+		can_pick_up = _is_pickup_target(collider)
+	else:
+		_ignored_dropped_object = null
+	if can_pick_up:
+		_set_crosshair_state(CrosshairState.TARGETING)
+		# Continuously rotate while targeting.
+		crosshair.rotation_degrees = wrapf(
+			crosshair.rotation_degrees + crosshair_spin_speed * delta,
+			0.0,
+			360.0
+		)
+	else:
+		_set_crosshair_state(CrosshairState.DEFAULT)
 
 
 func _exit_tree() -> void:
@@ -353,3 +408,122 @@ func _exit_tree() -> void:
 
 func _on_shit_meter_warning_reached(percent: float) -> void:
 	pass # Replace with function body.
+
+# Determine whether a raycast collider can be picked up.
+func _is_pickup_target(collider: Object) -> bool:
+	if not collider is RigidBody3D:
+		return false
+	if collider.is_queued_for_deletion():
+		return false
+	# Don't treat interactable objects as regular pickups.
+	if _get_interactable_from_collider(collider) != null:
+		return false
+	# Ignore the object we just dropped until the ray leaves it.
+	if _ignored_dropped_object != null:
+		var ignored = _ignored_dropped_object.get_ref()
+		if is_instance_valid(ignored):
+			if collider == ignored:
+				return false
+			else:
+				_ignored_dropped_object = null
+		else:
+			_ignored_dropped_object = null
+	return true
+
+
+# Manually drop the currently held object.
+func _drop_held_object() -> void:
+	if is_instance_valid(held_object) and not held_object.is_queued_for_deletion():
+		_ignored_dropped_object = weakref(held_object)
+	held_object = null
+	_holding_object = false
+	# Dropping is not considered losing an object.
+	_set_crosshair_state(CrosshairState.DEFAULT)
+
+
+# Update the crosshair pivot to its center.
+func _update_crosshair_pivot() -> void:
+	crosshair.pivot_offset = crosshair.size * 0.5
+
+
+# Change between crosshair states.
+func _set_crosshair_state(new_state: int) -> void:
+	if _crosshair_state == new_state:
+		return
+	if new_state == CrosshairState.LOST_FLASH:
+		return
+	_crosshair_state = new_state
+	# Stop any previous transition.
+	if _crosshair_tween != null and _crosshair_tween.is_running():
+		_crosshair_tween.kill()
+	_crosshair_tween = create_tween()
+	_crosshair_tween.set_parallel(true)
+	match new_state:
+		CrosshairState.DEFAULT:
+			crosshair.rotation_degrees = 0.0
+			_crosshair_tween.tween_property(
+				crosshair,
+				"scale",
+				_crosshair_default_scale,
+				crosshair_animation_speed
+			)
+			_crosshair_tween.tween_property(
+				crosshair,
+				"modulate",
+				Color.WHITE,
+				crosshair_animation_speed
+			)
+		CrosshairState.TARGETING:
+			_crosshair_tween.tween_property(
+				crosshair,
+				"scale",
+				_crosshair_default_scale * 0.75,
+				crosshair_animation_speed
+			)
+			_crosshair_tween.tween_property(
+				crosshair,
+				"modulate",
+				Color(0.2, 1.0, 0.3, 1.0),
+				crosshair_animation_speed
+			)
+		CrosshairState.HOLDING:
+			crosshair.rotation_degrees = 0.0
+			_crosshair_tween.tween_property(
+				crosshair,
+				"scale",
+				_crosshair_default_scale,
+				crosshair_animation_speed
+			)
+			_crosshair_tween.tween_property(
+				crosshair,
+				"modulate",
+				Color(1.0, 0.85, 0.1, 1.0),
+				crosshair_animation_speed
+			)
+
+
+# Play two red flashes when a held object disappears unexpectedly.
+func _play_lost_object_flash() -> void:
+	_crosshair_state = CrosshairState.LOST_FLASH
+	if _crosshair_tween != null and _crosshair_tween.is_running():
+		_crosshair_tween.kill()
+	crosshair.visible = true
+	crosshair.rotation_degrees = 0.0
+	crosshair.scale = _crosshair_default_scale
+	crosshair.modulate = Color.WHITE
+	_crosshair_tween = create_tween()
+	var red := Color(1.0, 0.0, 0.0, 1.0)
+	# First flash.
+	_crosshair_tween.tween_property(crosshair, "modulate", red, 0.12)
+	_crosshair_tween.tween_property(crosshair, "modulate", Color.WHITE, 0.12)
+	# Second flash.
+	_crosshair_tween.tween_property(crosshair, "modulate", red, 0.12)
+	_crosshair_tween.tween_property(crosshair, "modulate", Color.WHITE, 0.12)
+	_crosshair_tween.tween_callback(_finish_lost_object_flash)
+
+
+func _finish_lost_object_flash() -> void:
+	_crosshair_state = CrosshairState.DEFAULT
+	crosshair.scale = _crosshair_default_scale
+	crosshair.rotation_degrees = 0.0
+	crosshair.modulate = Color.WHITE
